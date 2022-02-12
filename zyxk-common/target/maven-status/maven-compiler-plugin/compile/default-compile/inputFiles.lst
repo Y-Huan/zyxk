@@ -1,0 +1,16 @@
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/FileUtils.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/exception/JwtException.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/BeanUtil.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/annotation/FreeAuthentication.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/ChineseCharUtil.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/exception/BizException.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/StringUtil.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/SignUtils.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/EncryptUtil.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/constant/ErrorCode.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/exception/BaseException.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/exception/AuthenticationException.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/vo/Response.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/constant/JwtConstant.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/constant/CommonEnum.java
+/Users/neoone/workspace/java/IERP/ierp-common/src/main/java/com/huge/ierp/common/util/UUIDUtils.java

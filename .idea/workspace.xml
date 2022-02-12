@@ -1,0 +1,1803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fe7d0911-39ee-4045-9a24-428f41606251" name="Default Changelist" comment="根据ID获取供应商信息接口类型更改" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/ierp-common/target/" />
+    <ignored path="$PROJECT_DIR$/ierp-api/target/" />
+    <ignored path="$PROJECT_DIR$/ierp-dao/target/" />
+    <ignored path="$PROJECT_DIR$/ierp-biz/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/ierp-web/target/" />
+    <ignored path="$PROJECT_DIR$/zyxk-api/target/" />
+    <ignored path="$PROJECT_DIR$/zyxk-common/target/" />
+    <ignored path="$PROJECT_DIR$/zyxk-dao/target/" />
+    <ignored path="$PROJECT_DIR$/zyxk-web/target/" />
+    <ignored path="$PROJECT_DIR$/zyxk-biz/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="96" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ierp-parent" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/ChineseCharUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-biz/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-dao/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/interceptor/JwtInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-api/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-common/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1065">
+              <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/UserJwtVo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>权限</find>
+      <find>WarehouseVoResultMap</find>
+      <find>登录</find>
+      <find>登录失败</find>
+      <find>type=&quot;com</find>
+      <find>角色</find>
+      <find>修改密码</find>
+      <find>Role</find>
+      <find>getusers</find>
+      <find>公司</find>
+      <find>id</find>
+      <find>角色添加失败</find>
+      <find>USER_ADD_ERROR</find>
+      <find>用户不存在</find>
+      <find>token</find>
+      <find>令牌</find>
+      <find>操作</find>
+      <find>错误</find>
+      <find>fuzzyQueryVo</find>
+      <find>无权</find>
+      <find>copyProperties</find>
+      <find>OPT</find>
+      <find>BSR</find>
+      <find>CSR</find>
+      <find>regionMapper</find>
+      <find>supplire</find>
+      <find>outOperDetailExcel</find>
+      <find>checkSign</find>
+      <find>wang gang</find>
+      <find>yang.H</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>supplier</replace>
+      <replace>yang.H</replace>
+      <replace>Yang.H</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/ierp-dao/src/main/java/com/huge/ierp/dao/entity</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/CourseTecherRel.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Major.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Role.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/RoleAuthorityRel.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Sequence.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/School.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Student.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/SysAuthority.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Teacher.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/CollegeMappre.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/ClaseMappre.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/ClaseMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/CollegeMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/CourseMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/CourseStudentRelMappre.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/CourseTeacherRelMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/MajorMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/RoleMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/RoleAuthorityRelMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/SchoolMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/SequenceMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/StudentMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/SysAuthorityMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/TeacherMapper.java" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/Clase.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/College.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CourseMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CourseStudentRelMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CourseTeacherRelMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/MajorMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/RoleAuthorityRelMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/RoleMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/SchoolMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/SequenceMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/StudentMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/SysAuthorityMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/TeacherMapper.xml" />
+        <option value="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/util/JwtUtil.java" />
+        <option value="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/UserJwtVo.java" />
+        <option value="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/RedisServiceImpl.java" />
+        <option value="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/RedisService.java" />
+        <option value="$PROJECT_DIR$/zyxk-web/pom.xml" />
+        <option value="$PROJECT_DIR$/zyxk-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/zyxk-api/pom.xml" />
+        <option value="$PROJECT_DIR$/zyxk-common/pom.xml" />
+        <option value="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/ZyxkApplication.java" />
+        <option value="$PROJECT_DIR$/zyxk-biz/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/SignUtils.java" />
+        <option value="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/interceptor/JwtInterceptor.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="y" value="25" />
+    <option name="width" value="1680" />
+    <option name="height" value="1025" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-biz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="zyy" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ierp-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZYXK" type="462c0819:PsiDirectoryNode" />
+              <item name="zyxk-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="OPEN_URL_DIALOG">
+      <recent name="https://codeup.aliyun.com/5e9fba08e17c0e0001fd91fc/front/IERP_Manager.git" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.zyy.zyxk.service.impl" />
+      <recent name="com.zyy.zyxk.service" />
+      <recent name="com.zyy.zyxk.dao" />
+      <recent name="com.zyy.zyxk.dao.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper" />
+      <recent name="$PROJECT_DIR$/ierp-dao/src/main/resources/mapper" />
+      <recent name="$PROJECT_DIR$/ierp-common/src/main/java/com/huge/ierp/common/util" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.zyxkApplication">
+    <configuration name="SignUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zyy.zyxk.common.util.SignUtils" />
+      <module name="zyxk-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zyy.zyxk.common.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="zyxk-web" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="zyxk-web" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="zyxkApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="zyxk-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zyy.zyxk.web.ZyxkApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SignUtils" />
+      <item itemvalue="Spring Boot.zyxkApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SignUtils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe7d0911-39ee-4045-9a24-428f41606251" name="Default Changelist" comment="" />
+      <created>1630732881528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1630732881528</updated>
+      <workItem from="1630732882862" duration="78140000" />
+      <workItem from="1631079081446" duration="115409000" />
+      <workItem from="1631774723118" duration="309000" />
+      <workItem from="1641881239445" duration="958000" />
+      <workItem from="1641891389582" duration="433000" />
+      <workItem from="1641948883234" duration="29559000" />
+      <workItem from="1642121422396" duration="19099000" />
+      <workItem from="1642215640169" duration="34594000" />
+      <workItem from="1642380691840" duration="401000" />
+      <workItem from="1642381538393" duration="177000" />
+      <workItem from="1642383660401" duration="9896000" />
+      <workItem from="1642466753431" duration="4678000" />
+      <workItem from="1642473954161" duration="196000" />
+      <workItem from="1642475489947" duration="9422000" />
+      <workItem from="1642552860229" duration="1585000" />
+      <workItem from="1642558484143" duration="30619000" />
+      <workItem from="1642725719553" duration="12054000" />
+      <workItem from="1642817365988" duration="10674000" />
+      <workItem from="1642898573127" duration="2230000" />
+      <workItem from="1643092922729" duration="7664000" />
+      <workItem from="1644367350707" duration="247000" />
+      <workItem from="1644367888854" duration="454000" />
+      <workItem from="1644368400330" duration="4437000" />
+      <workItem from="1644632594213" duration="2170000" />
+    </task>
+    <task id="LOCAL-00001" summary="根据权限分页查询用户">
+      <created>1630745978658</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1630745978658</updated>
+    </task>
+    <task id="LOCAL-00002" summary="根据权限分页查询用户，返回分页列表">
+      <created>1630899031974</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1630899031974</updated>
+    </task>
+    <task id="LOCAL-00003" summary="登录权限修改">
+      <created>1630902748843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1630902748843</updated>
+    </task>
+    <task id="LOCAL-00004" summary="登录权限修改">
+      <created>1630902832566</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1630902832566</updated>
+    </task>
+    <task id="LOCAL-00005" summary="根据权限获取列表修改">
+      <created>1630917830845</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1630917830845</updated>
+    </task>
+    <task id="LOCAL-00006" summary="根据权限获取列表修改_角色字段的增加">
+      <created>1630919439411</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1630919439411</updated>
+    </task>
+    <task id="LOCAL-00007" summary="用户查询修改">
+      <created>1630975977117</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1630975977117</updated>
+    </task>
+    <task id="LOCAL-00008" summary="获取用户列表修改bug">
+      <created>1630980009429</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1630980009429</updated>
+    </task>
+    <task id="LOCAL-00009" summary="获取用户列表修改bug">
+      <created>1630983618920</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1630983618920</updated>
+    </task>
+    <task id="LOCAL-00010" summary="修改查询角色列表">
+      <created>1631003022191</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631003022191</updated>
+    </task>
+    <task id="LOCAL-00011" summary="获取权限列表修改">
+      <created>1631065813462</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1631065813462</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update AppUserLogin">
+      <created>1631080595164</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1631080595164</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update AppUserLogin">
+      <created>1631081574530</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631081574530</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update appChangePassword">
+      <created>1631086674862</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631086674862</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update appChangePassword">
+      <created>1631086788606</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1631086788606</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update addROle&#10;add badeUserCompany">
+      <created>1631157588687</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1631157588687</updated>
+    </task>
+    <task id="LOCAL-00017" summary="修改添加角色和用户的条件">
+      <created>1631174410890</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1631174410891</updated>
+    </task>
+    <task id="LOCAL-00018" summary="修改用户禁用功能">
+      <created>1631237037061</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1631237037061</updated>
+    </task>
+    <task id="LOCAL-00019" summary="添加用户模糊查询的功能">
+      <created>1631253547332</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1631253547332</updated>
+    </task>
+    <task id="LOCAL-00020" summary="删除用户修改——不可删除自己账号">
+      <created>1631256245559</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1631256245559</updated>
+    </task>
+    <task id="LOCAL-00021" summary="禁用用户添加修改用户时间">
+      <created>1631256457312</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1631256457312</updated>
+    </task>
+    <task id="LOCAL-00022" summary="公司禁用和删除后，删除当前公司token，强制用户下线">
+      <created>1631333859065</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1631333859065</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update ErrorCode 错误信息修改">
+      <created>1631348424301</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1631348424301</updated>
+    </task>
+    <task id="LOCAL-00024" summary="用户管理-模糊查询和列表查询合并&#10;用户管理-禁用和启用用户合并&#10;小程序-登录提交">
+      <created>1631498389168</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1631498389168</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Update add User">
+      <created>1631500444509</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1631500444509</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Update add User">
+      <created>1631509348961</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1631509348961</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Update add User">
+      <created>1631523827083</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1631523827083</updated>
+    </task>
+    <task id="LOCAL-00028" summary="新增用户修改&#10;删除用户查询修改&#10;用户查询修改">
+      <created>1631587566569</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1631587566570</updated>
+    </task>
+    <task id="LOCAL-00029" summary="公司启用禁用合并">
+      <created>1631595602730</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1631595602730</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ADD用户管理多条件查询&#10;ADD公司管理多条件查询">
+      <created>1631683198646</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1631683198646</updated>
+    </task>
+    <task id="LOCAL-00031" summary="公司多条件查询修改">
+      <created>1631688254143</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1631688254143</updated>
+    </task>
+    <task id="LOCAL-00032" summary="公司多条件日期查询修改 / 用户多条件日期查询修改&#10;APP用户登录限制">
+      <created>1631692490842</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1631692490842</updated>
+    </task>
+    <task id="LOCAL-00033" summary="App用户登录增加返回角色">
+      <created>1631752652008</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1631752652008</updated>
+    </task>
+    <task id="LOCAL-00034" summary="用户角色增删查修改">
+      <created>1631762332079</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1631762332079</updated>
+    </task>
+    <task id="LOCAL-00035" summary="后台修改密码， bug修改&#10;后台管理员工删除员工 bug修改">
+      <created>1631774860684</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1631774860685</updated>
+    </task>
+    <task id="LOCAL-00036" summary="财务管理，供应商管理相关联调完成（未测试）">
+      <created>1642667350364</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1642667350364</updated>
+    </task>
+    <task id="LOCAL-00037" summary="财务管理，供应商管理相关已知BUG修复">
+      <created>1642747549724</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1642747549724</updated>
+    </task>
+    <task id="LOCAL-00038" summary="财务管理，供应商管理相关已知BUG修复">
+      <created>1642830803864</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1642830803864</updated>
+    </task>
+    <task id="LOCAL-00039" summary="补充小程序应付详情明细接口">
+      <created>1642832991997</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1642832991997</updated>
+    </task>
+    <task id="LOCAL-00040" summary="根据ID获取供应商信息接口类型更改">
+      <created>1642833351752</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1642833351752</updated>
+    </task>
+    <task id="LOCAL-00041" summary="供应商列表已知BUG修复">
+      <created>1642908509848</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1642908509848</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="375405000" />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <layout>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" sideWeight="0.50120485" side_tool="true" weight="0.21816881" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49879518" visible="true" weight="0.22588523" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32857144" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.26824033" side_tool="true" weight="0.4755102" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.39387757" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" weight="0.32857144" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.73175967" weight="0.4755102" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32891566" />
+      <window_info anchor="bottom" id="Message" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.32857144" />
+      <window_info anchor="bottom" id="Run" order="10" sideWeight="0.49928468" weight="0.33979592" />
+      <window_info anchor="bottom" id="Debug" order="11" visible="true" weight="0.3510204" />
+      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="14" weight="0.32891566" />
+      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.5015723" side_tool="true" weight="0.15262516" />
+      <window_info anchor="right" id="Palette" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32967034" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Bean Validation" order="6" weight="0.3297568" />
+      <window_info anchor="right" id="Maven" order="7" sideWeight="0.49842766" weight="0.20940171" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="8" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="9" weight="0.24964234" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update appChangePassword" />
+    <MESSAGE value="update addROle" />
+    <MESSAGE value="update addROle&#10;add badeUserCompany" />
+    <MESSAGE value="修改添加角色和用户的条件" />
+    <MESSAGE value="修改用户禁用功能" />
+    <MESSAGE value="添加用户模糊查询的功能" />
+    <MESSAGE value="删除用户修改——不可删除自己账号" />
+    <MESSAGE value="禁用用户添加修改用户时间" />
+    <MESSAGE value="公司禁用和删除后，删除当前公司token，强制用户下线" />
+    <MESSAGE value="update ErrorCode 错误信息修改" />
+    <MESSAGE value="用户管理-模糊查询和列表查询合并&#10;用户管理-禁用和启用用户合并&#10;小程序-登录提交" />
+    <MESSAGE value="Update add User" />
+    <MESSAGE value="新增用户修改&#10;删除用户查询修改&#10;用户查询修改" />
+    <MESSAGE value="公司启用禁用合并" />
+    <MESSAGE value="ADD用户管理多条件查询&#10;ADD公司管理多条件查询" />
+    <MESSAGE value="公司多条件查询修改" />
+    <MESSAGE value="公司多条件日期查询修改 / 用户多条件日期查询修改&#10;APP用户登录限制" />
+    <MESSAGE value="App用户登录增加返回角色" />
+    <MESSAGE value="用户角色增删查修改" />
+    <MESSAGE value="后台修改密码， bug修改&#10;后台管理员工删除员工 bug修改" />
+    <MESSAGE value="财务管理，供应商管理相关联调完成（未测试）" />
+    <MESSAGE value="财务管理，供应商管理相关已知BUG修复" />
+    <MESSAGE value="补充小程序应付详情明细接口" />
+    <MESSAGE value="根据ID获取供应商信息接口类型更改" />
+    <MESSAGE value="供应商列表已知BUG修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="供应商列表已知BUG修复" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/OperationOrderServiceImpl.java</url>
+          <line>138</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/OperationController.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/OperationController.java</url>
+          <line>97</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/CommonServiceImpl.java</url>
+          <line>155</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/OperationController.java</url>
+          <line>77</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/CompanyController.java</url>
+          <line>286</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ierp_parent$IerpApplication.ic" NAME="IerpApplication Coverage Results" MODIFIED="1642300274503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/MajorMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/RoleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/RoleAuthorityRelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/SchoolMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/SequenceMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/StudentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/SysAuthorityMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" selection-start-line="10" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/TeacherMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/ClaseMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CollegeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CourseMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CourseStudentRelMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/CourseTeacherRelMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/MajorMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/RoleAuthorityRelMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/RoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/SchoolMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/SequenceMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/StudentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/selectVo/UserWhseRelVo.java" />
+    <entry file="file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/config/AliyunOSSConfig.java" />
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/SysAuthorityMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/TeacherMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/selectVo/BaseSelectVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/util/JwtUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1410">
+          <caret line="109" column="22" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/util/ExcelUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/RedisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/RedisServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Major.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/resources/application-produce.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.2.15.RELEASE/spring-context-5.2.15.RELEASE-sources.jar!/org/springframework/context/annotation/ComponentScan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/resources/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/config/WebConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/config/GlobalExceptionAdvice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-biz/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-dao/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/UserJwtVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cdm/sql/init_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cdm/sql/alter.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/ZyxkApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/SignUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="141" column="16" lean-forward="true" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/config/JacksonConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/interceptor/JwtInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/UUIDUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/ChineseCharUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

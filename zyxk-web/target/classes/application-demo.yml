@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: zyy-zyxk
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.102.206.73:3306/zyxk?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: fanglei1109
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    port: 6379
+    host: 47.102.206.73
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-active: 8
+        max-wait: 1ms
+      shutdown-timeout: 100ms
+
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+
+logging:
+  config: classpath:log4j2.xml
+
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      id-type: assign_uuid
+      table-underline: true
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: com.zyy.zyxk.dao.entity
+  configuration:
+    call-setters-on-nulls: true
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
