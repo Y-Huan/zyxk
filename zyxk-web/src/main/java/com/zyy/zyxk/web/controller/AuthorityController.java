@@ -28,7 +28,7 @@ import java.util.List;
 @RequestMapping("authority")
 public class AuthorityController {
 
-    @Autowired(required=false)
+    @Autowired
     private AuthorityService authorityService;
 
     @PostMapping("addAuthority")

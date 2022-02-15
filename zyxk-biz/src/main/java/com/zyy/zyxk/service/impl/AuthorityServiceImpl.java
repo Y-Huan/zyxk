@@ -13,6 +13,7 @@ import com.zyy.zyxk.service.AuthorityService;
 import com.zyy.zyxk.service.CommonService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -23,6 +24,7 @@ import java.util.List;
  * @version 1.0
  * @date 2/14/22 9:01 AM
  */
+@Service
 public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAuthority> implements AuthorityService {
 
     @Autowired

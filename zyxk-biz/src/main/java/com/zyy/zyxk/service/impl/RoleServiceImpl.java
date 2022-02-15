@@ -16,6 +16,7 @@ import com.zyy.zyxk.service.CommonService;
 import com.zyy.zyxk.service.RoleService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,7 @@ import java.util.List;
  * @version 1.0
  * @date 2/14/22 2:46 PM
  */
+@Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
     @Autowired
