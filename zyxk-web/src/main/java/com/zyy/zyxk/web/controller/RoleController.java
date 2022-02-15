@@ -30,7 +30,7 @@ import java.util.List;
 @RequestMapping("role")
 public class RoleController {
 
-    @Autowired
+    @Autowired(required=false)
     private RoleService roleService;
 
     @PostMapping("addRple")
