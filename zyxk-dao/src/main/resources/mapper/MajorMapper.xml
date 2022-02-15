@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.MajorMapper">
+    <select id="selectMajorList" resultType="com.zyy.zyxk.api.vo.major.MajorListVo">
+        select  m.major_id as majorId,
+                m.major_name as majorName,
+                m.college_id as collegeId,
+                m.person_in_charge_id as personInChargeId,
+                t.teacher_name as personInChargeName,
+                t.phone,
+                c.college_name as collegeName
+        from major m
+        left join college c on m.college =c.college_id
+        left join teacher t on m.person_in_charge_id = t.teacher_id
+        where m.is_del = true
+        <if test="majorName != null and majorName != ''">
+            and m.major_name like '%${majorName}%'
+        </if>
+        <if test="personInChargeName != null and personInChargeName != ''">
+            and t.teacher_name like '%${personInChargeName}%'
+        </if>
+        <if test="phone != null and phone != ''">
+            and t.phone like '%${phone}%'
+        </if>
+        <if test="collegeName != null and collegeName != ''">
+            and m.college_name like '%${collegeName}%'
+        </if>
+    </select>
+    <select id="selectedMajorById" resultType="com.zyy.zyxk.api.vo.major.MajorListVo">
+        select  m.major_id as majorId,
+                m.major_name as majorName,
+                m.college_id as collegeId,
+                m.person_in_charge_id as personInChargeId,
+                t.teacher_name as personInChargeName,
+                t.phone,
+                c.college_name as collegeName
+        from major m
+        left join college c on m.college =c.college_id
+        left join teacher t on m.person_in_charge_id = t.teacher_id
+        where m.major_id = #{majorId}
+    </select>
 </mapper>

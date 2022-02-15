@@ -51,7 +51,7 @@ public enum ErrorCode {
     AUTHORITY_NULL(10029,"未匹配到权限信息"),
     AUTHORITY_NAME_ERROR(10030,"权限名已存在"),
     ROLE_PLESE_ADD(10068,"请先创建角色"),
-
+    Major_Name_existed(10050,"该专业名称已存在"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),
@@ -60,6 +60,7 @@ public enum ErrorCode {
     EXCL_NULL_ERROR(99930,"EXCL为空"),
     EXCL_TYPE_ERROR(99940,"文件格式错误"),
     SIGN_TIME_ERROR(99950,"签名已过期");
+
 
 
 

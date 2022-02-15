@@ -30,7 +30,7 @@ public class Major implements Serializable{
 
     private String collegeId;
 
-    private String personInCharge;
+    private String personInChargeId;
 
     private String creator;
 
