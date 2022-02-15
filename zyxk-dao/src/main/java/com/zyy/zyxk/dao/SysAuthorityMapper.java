@@ -1,7 +1,10 @@
 package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.dao.entity.SysAuthority;
+
+import java.util.List;
 
 /**
  * @author Yang.H
@@ -9,4 +12,6 @@ import com.zyy.zyxk.dao.entity.SysAuthority;
  * @date 1/25/22 4:46 PM
  */
 public interface SysAuthorityMapper extends BaseMapper<SysAuthority> {
+
+    List<AuthorityVo> getList();
 }

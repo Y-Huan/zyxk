@@ -8,7 +8,6 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -39,12 +38,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("大地海洋-进销存管理系统 API")
-                .description("大地海洋-进销存管理系统 API 1.0 操作文档")
+                .title("zyxk-选课选导师系统 API")
+                .description("zyxk-选课选导师系统 API")
                 //服务条款网址
-                .termsOfServiceUrl("http://www.hugehuge.cn")
-                .version("1.0")
-                .contact(new Contact("虎哥数字", "http://www.dhuge.com/", "it@zyy.cn"))
                 .build();
     }
 }

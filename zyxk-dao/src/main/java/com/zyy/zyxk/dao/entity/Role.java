@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 
 /**
@@ -29,9 +30,9 @@ public class Role implements Serializable{
 
     private String creator;
 
-    private Data createTime;
+    private LocalDateTime createTime;
 
-    private Data updateTime;
+    private LocalDateTime updateTime;
 
     private boolean isDel;
 

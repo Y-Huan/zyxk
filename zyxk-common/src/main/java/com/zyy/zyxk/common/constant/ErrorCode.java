@@ -22,7 +22,7 @@ public enum ErrorCode {
     NO_USERNAME(408,"用户名不能为空"),
     No_Role_Name(409,"角色名称不能为空"),
     No_Role_Id(410,"角色id不能为空"),
-    No_Authorities(411,"权限列表不能为空"),
+    No_Authorities(411,"角色所拥有的的权限不能为空"),
     SERVER_ERROR(500, "服务器异常"),
     USER_ADD_ERROR(10000, "用户添加失败"),
     USER_DELETE_ERROR(10001, "用户删除失败"),
@@ -47,6 +47,9 @@ public enum ErrorCode {
     Role_Id_Invalid(10025,"无效的角色id"),
     Role_Delete_Error(10026,"角色删除失败"),
     Role_Auth_List_Update_Error(10027,"角色权限关系列表更新失败"),
+    AUTHORITY_TYPE_NULL(10028,"权限类型为空"),
+    AUTHORITY_NULL(10029,"未匹配到权限信息"),
+    AUTHORITY_NAME_ERROR(10030,"权限名已存在"),
     ROLE_PLESE_ADD(10068,"请先创建角色"),
 
 
