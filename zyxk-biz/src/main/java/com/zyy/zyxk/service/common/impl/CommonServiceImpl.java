@@ -1,9 +1,9 @@
-package com.zyy.zyxk.service.impl;
+package com.zyy.zyxk.service.common.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyy.zyxk.dao.SequenceMapper;
 import com.zyy.zyxk.dao.entity.Sequence;
-import com.zyy.zyxk.service.CommonService;
+import com.zyy.zyxk.service.common.CommonService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

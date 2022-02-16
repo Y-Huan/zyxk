@@ -1,16 +1,13 @@
 package com.zyy.zyxk.web.controller;
 
-import com.zyy.zyxk.api.vo.RoleVo;
 import com.zyy.zyxk.api.vo.major.InsertMajorVo;
 import com.zyy.zyxk.api.vo.major.MajorListVo;
 import com.zyy.zyxk.api.vo.major.SelectMajorVo;
 import com.zyy.zyxk.api.vo.major.UpdateMajorVo;
 import com.zyy.zyxk.common.vo.Response;
-import com.zyy.zyxk.dao.entity.Major;
-import com.zyy.zyxk.service.MajorService;
+import com.zyy.zyxk.service.major.MajorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import jdk.nashorn.internal.runtime.DebugLogger;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

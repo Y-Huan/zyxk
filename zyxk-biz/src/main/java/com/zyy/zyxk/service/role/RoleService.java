@@ -1,8 +1,8 @@
-package com.zyy.zyxk.service;
+package com.zyy.zyxk.service.role;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zyy.zyxk.api.vo.RoleAuthorityVo;
-import com.zyy.zyxk.api.vo.RoleVo;
+import com.zyy.zyxk.api.vo.role.RoleAuthorityVo;
+import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.dao.entity.Role;
 

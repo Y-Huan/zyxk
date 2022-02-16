@@ -1,11 +1,11 @@
 package com.zyy.zyxk.web.controller;
 
-import com.zyy.zyxk.api.vo.RoleAuthorityVo;
-import com.zyy.zyxk.api.vo.RoleVo;
+import com.zyy.zyxk.api.vo.role.RoleAuthorityVo;
+import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
-import com.zyy.zyxk.service.RoleService;
+import com.zyy.zyxk.service.role.RoleService;
 import com.zyy.zyxk.service.util.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

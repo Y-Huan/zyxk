@@ -1,4 +1,4 @@
-package com.zyy.zyxk.service;
+package com.zyy.zyxk.service.major;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.major.InsertMajorVo;

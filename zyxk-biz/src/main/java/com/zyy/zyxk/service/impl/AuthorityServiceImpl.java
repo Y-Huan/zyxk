@@ -10,7 +10,7 @@ import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.dao.SysAuthorityMapper;
 import com.zyy.zyxk.dao.entity.SysAuthority;
 import com.zyy.zyxk.service.AuthorityService;
-import com.zyy.zyxk.service.CommonService;
+import com.zyy.zyxk.service.common.CommonService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

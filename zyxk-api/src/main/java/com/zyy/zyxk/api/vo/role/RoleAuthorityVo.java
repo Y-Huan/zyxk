@@ -1,4 +1,4 @@
-package com.zyy.zyxk.api.vo;
+package com.zyy.zyxk.api.vo.role;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

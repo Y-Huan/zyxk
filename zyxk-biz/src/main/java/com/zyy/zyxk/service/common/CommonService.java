@@ -1,4 +1,4 @@
-package com.zyy.zyxk.service;
+package com.zyy.zyxk.service.common;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.dao.entity.Sequence;

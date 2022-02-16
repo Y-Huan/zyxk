@@ -1,9 +1,9 @@
-package com.zyy.zyxk.service.impl;
+package com.zyy.zyxk.service.role.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zyy.zyxk.api.vo.RoleAuthorityVo;
-import com.zyy.zyxk.api.vo.RoleVo;
+import com.zyy.zyxk.api.vo.role.RoleAuthorityVo;
+import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.BizException;
@@ -12,8 +12,8 @@ import com.zyy.zyxk.dao.RoleAuthorityRelMapper;
 import com.zyy.zyxk.dao.RoleMapper;
 import com.zyy.zyxk.dao.entity.Role;
 import com.zyy.zyxk.dao.entity.RoleAuthorityRel;
-import com.zyy.zyxk.service.CommonService;
-import com.zyy.zyxk.service.RoleService;
+import com.zyy.zyxk.service.common.CommonService;
+import com.zyy.zyxk.service.role.RoleService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

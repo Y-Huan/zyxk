@@ -1,7 +1,7 @@
 package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zyy.zyxk.api.vo.RoleVo;
+import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.dao.entity.Role;
 
 import java.util.List;
