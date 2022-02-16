@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
+import com.zyy.zyxk.common.annotation.FreeAuthentication;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.AuthorityService;
-import com.zyy.zyxk.service.util.JwtUtil;
 import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +17,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,10 +35,14 @@ public class AuthorityController {
     private AuthorityService authorityService;
 
     @PostMapping("addAuthority")
+    @FreeAuthentication
     @ApiOperation("新增权限")
-    public Response addAuthority(@RequestBody AuthorityVo authorityVo, HttpServletRequest request){
-        String token = request.getHeader("token");
-        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+    public Response addAuthority(@RequestBody AuthorityVo authorityVo){
+//        String token = request.getHeader("token");, HttpServletRequest request
+//        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+
+        UserJwtVo currentUser = new UserJwtVo();
+        currentUser.setId("0000000000000001");
         if(authorityVo.getAuthorityType() == null){
             return Response.fail(ErrorCode.AUTHORITY_TYPE_NULL);
         }

@@ -46,7 +46,7 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
         //将传入的信息映射到实体
         BeanUtil.copyProperties(authorityVo,sysAuthority);
         //获取ID
-        sysAuthority.setAuthorityId(commonService.getSequence("SYS_AUTHORITY",null));
+//        sysAuthority.setAuthorityId(commonService.getSequence("SYS_AUTHORITY",null));
         //设置更新时间
         sysAuthority.setCreateTime(LocalDateTime.now());
         //设置创建人

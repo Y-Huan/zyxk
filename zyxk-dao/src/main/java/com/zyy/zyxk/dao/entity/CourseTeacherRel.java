@@ -3,6 +3,8 @@ package com.zyy.zyxk.dao.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zyy.zyxk.dao.util.DiyId;
+import com.zyy.zyxk.dao.util.TableEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -23,7 +25,8 @@ import java.time.LocalDateTime;
 public class CourseTeacherRel implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "course_techer_rel_id", type = IdType.ASSIGN_UUID)
+    @TableId(value = "course_teacher_rel_id", type = IdType.ASSIGN_UUID)
+    @DiyId(TableEnum.COURSE_TECHER_REL)
     private String courseTeacherRelId;
 
     private String courseId;

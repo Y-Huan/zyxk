@@ -3,6 +3,8 @@ package com.zyy.zyxk.dao.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zyy.zyxk.dao.util.DiyId;
+import com.zyy.zyxk.dao.util.TableEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -24,6 +26,7 @@ public class College implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "college_id", type = IdType.ASSIGN_UUID)
+    @DiyId(TableEnum.COLLEGE)
     private String collegeId;
 
     private String collegeName;
