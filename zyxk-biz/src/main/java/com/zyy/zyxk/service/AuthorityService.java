@@ -1,8 +1,10 @@
 package com.zyy.zyxk.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import com.zyy.zyxk.dao.entity.SysAuthority;
 
 import java.util.List;
@@ -21,5 +23,5 @@ public interface AuthorityService  extends IService<SysAuthority> {
     //修改权限
     void updateAuthority(AuthorityVo authorityVo);
     //权限列表
-    List<AuthorityVo> getList();
+    List<AuthorityVo> getList(IPage page, BaseSelectVo baseSelectVo);
 }

@@ -1,12 +1,16 @@
 package com.zyy.zyxk.web.controller;
 
-import com.zyy.zyxk.api.vo.role.RoleAuthorityVo;
-import com.zyy.zyxk.api.vo.role.RoleVo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.api.vo.role.RoleAuthorityListVo;
+import com.zyy.zyxk.api.vo.role.RoleVo;
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.role.RoleService;
 import com.zyy.zyxk.service.util.JwtUtil;
+import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -35,17 +39,15 @@ public class RoleController {
 
     @PostMapping("addRple")
     @ApiOperation("新增角色")
-    public Response addRole(@RequestBody RoleAuthorityVo roleAuthorityVo, HttpServletRequest request){
+    public Response addRole(@RequestBody RoleVo roleVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-        if(StringUtils.isEmpty(roleAuthorityVo.getRoleName())){
+        if(StringUtils.isEmpty(roleVo.getRoleName())){
             return Response.fail(ErrorCode.No_Role_Name);
         }
-        if (roleAuthorityVo.getAuthoritys().size() <= 0 ){
-            return Response.fail(ErrorCode.No_Authorities);
-        }
+
         try {
-            roleService.addRole(roleAuthorityVo,currentUser);
+            roleService.addRole(roleVo,currentUser);
         }catch (Exception e){
             log.info(e.getMessage());
         }
@@ -69,7 +71,7 @@ public class RoleController {
 
     @PostMapping("updateRole")
     @ApiOperation("编辑角色")
-    public Response upodateRole(@RequestBody RoleAuthorityVo roleAuthorityVo, HttpServletRequest request){
+    public Response upodateRole(@RequestBody RoleAuthorityListVo roleAuthorityVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
         if (roleAuthorityVo.getAuthoritys().size() <= 0 ){
@@ -88,14 +90,24 @@ public class RoleController {
 
     @GetMapping("list")
     @ApiOperation("角色列表")
-    public Response list(){
+    public Response list(BaseSelectVo baseSelectVo){
         List<RoleVo> roleVos = new ArrayList<>();
         try {
-            roleVos = roleService.getList();
+            IPage page = new Page<>();
+            PageUtil.setPage(baseSelectVo.getPageNo(), baseSelectVo.getPageSize(), page);
+            roleVos = roleService.getList(page,baseSelectVo.getSelectStringKey());
         }catch (Exception e){
             log.info(e.getMessage());
         }
         return Response.success("获取成功",roleVos);
     }
 
+    @GetMapping("roleAuthorityList")
+    @ApiOperation("获取角色权限列表")
+    public  Response roleAuthorityList(String roleId){
+        if(roleId ==null){
+            return Response.fail(ErrorCode.No_Role_Id);
+        }
+        return roleService.getAuthorityList(roleId);
+    }
 }

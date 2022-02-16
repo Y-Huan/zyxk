@@ -1,8 +1,10 @@
 package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.dao.entity.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,5 +15,5 @@ import java.util.List;
  */
 public interface RoleMapper extends BaseMapper<Role> {
     //角色列表
-    List<RoleVo> getList();
+    List<RoleVo> getList(IPage page, @Param("selectStringKey") String selectStringKey);
 }

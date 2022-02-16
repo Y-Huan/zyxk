@@ -1,11 +1,15 @@
 package com.zyy.zyxk.web.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.AuthorityService;
 import com.zyy.zyxk.service.util.JwtUtil;
+import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -80,10 +84,12 @@ public class AuthorityController {
 
     @GetMapping("list")
     @ApiOperation("权限列表")
-    public Response list(){
+    public Response list(BaseSelectVo baseSelectVo){
         List<AuthorityVo> authorityVos = new ArrayList<>();
         try{
-            authorityVos  = authorityService.getList();
+            IPage page = new Page<>();
+            PageUtil.setPage(baseSelectVo.getPageNo(), baseSelectVo.getPageSize(), page);
+            authorityVos  = authorityService.getList(page,baseSelectVo);
         }catch (Exception e){
             log.info(e.getMessage());
         }

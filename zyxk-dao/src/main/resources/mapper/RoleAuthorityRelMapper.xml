@@ -8,4 +8,11 @@
                 update_time = now
         where role_id = #{roleId}
     </update>
+    <select id="getList" resultType="com.zyy.zyxk.api.view.SysRoleAuthorityView">
+        SELECT ra.role_authority_rel_id,a.authority_id,a.authority_name,a.authority_type,a.parent_authority_id, ra.is_del
+        from sys_authority a
+                 left join role_authority_rel ra on a.authority_id=ra.authority_id
+								 AND ra.role_id=#{roleId}
+        order by a.parent_authority_id;
+    </select>
 </mapper>

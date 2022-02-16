@@ -6,5 +6,6 @@
             sa.*
         from sys_authority sa
         where sa.is_del = true
+            and sa.authority_name = #{selectKey}
     </select>
 </mapper>

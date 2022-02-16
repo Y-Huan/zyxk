@@ -1,8 +1,10 @@
 package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.dao.entity.SysAuthority;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,5 +15,5 @@ import java.util.List;
  */
 public interface SysAuthorityMapper extends BaseMapper<SysAuthority> {
 
-    List<AuthorityVo> getList();
+    List<AuthorityVo> getList(IPage page,@Param("selectKey") String selectKey);
 }

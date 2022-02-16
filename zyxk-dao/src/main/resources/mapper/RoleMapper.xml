@@ -7,5 +7,6 @@
             r.role_name,
         from role r
         where r.is_del = 1
+            and r.role_name = #{selectStringKey}
     </select>
 </mapper>

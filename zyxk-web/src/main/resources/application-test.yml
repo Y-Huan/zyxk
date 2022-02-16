@@ -21,7 +21,7 @@ spring:
       shutdown-timeout: 100ms
 
 server:
-  port: 8081
+  port: 1220
   tomcat:
     uri-encoding: UTF-8
 

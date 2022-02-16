@@ -18,6 +18,6 @@ public class BaseSelectVo implements Serializable {
     String selectStringKey;
 
     @ApiModelProperty("数值查询")
-    String selectLongKey;
+    Long selectLongKey;
 
 }

@@ -1,26 +1,35 @@
 package com.zyy.zyxk.service.role.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zyy.zyxk.api.view.SysRoleAuthorityView;
+import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.api.vo.role.RoleAuthorityGroupVo;
+import com.zyy.zyxk.api.vo.role.RoleAuthorityListVo;
 import com.zyy.zyxk.api.vo.role.RoleAuthorityVo;
 import com.zyy.zyxk.api.vo.role.RoleVo;
-import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.common.constant.CommonEnum;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.BizException;
 import com.zyy.zyxk.common.util.BeanUtil;
+import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.dao.RoleAuthorityRelMapper;
 import com.zyy.zyxk.dao.RoleMapper;
 import com.zyy.zyxk.dao.entity.Role;
 import com.zyy.zyxk.dao.entity.RoleAuthorityRel;
 import com.zyy.zyxk.service.common.CommonService;
 import com.zyy.zyxk.service.role.RoleService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Yang.H
@@ -28,6 +37,7 @@ import java.util.List;
  * @date 2/14/22 2:46 PM
  */
 @Service
+@Slf4j
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
     @Autowired
@@ -41,29 +51,20 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     @Transactional
-    public void addRole(RoleAuthorityVo roleAuthorityVo, UserJwtVo currentUser) {
+    public void addRole(RoleVo roleVo, UserJwtVo currentUser) {
         //如果有重名抛出
-        if(roleName(roleAuthorityVo)){
+        if(roleName(roleVo.getRoleName(),null)){
             throw new BizException(ErrorCode.Role_Name_Existed);
         }
         //设置信息新增
         Role role = new Role();
         role.setRoleId(commonService.getSequence("ROLE",null));
-        role.setRoleName(roleAuthorityVo.getRoleName());
+        role.setRoleName(roleVo.getRoleName());
         role.setCreator(currentUser.getId());
         role.setCreateTime(LocalDateTime.now());
         role.setDel(true);
         roleMapper.insert(role);
-        //遍历权限Id设置信息和角色关联
-        for(String authorityId : roleAuthorityVo.getAuthoritys()){
-            RoleAuthorityRel roleAuthorityRel = new RoleAuthorityRel();
-            roleAuthorityRel.setRoleId(role.getRoleId());
-            roleAuthorityRel.setAuthorityId(authorityId);
-            roleAuthorityRel.setRoleAuthorityRelId(commonService.getSequence("ROLE_AUTHORITY_REL",null));
-            roleAuthorityRel.setCreateTime(LocalDateTime.now());
-            roleAuthorityRel.setCreator(currentUser.getId());
-            roleAuthorityRelMapper.insert(roleAuthorityRel);
-        }
+
     }
 
     @Override
@@ -82,40 +83,61 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
-    public void updateRole(RoleAuthorityVo roleAuthorityVo, UserJwtVo currentUser) {
+    public void updateRole(RoleAuthorityListVo roleAuthorityVo, UserJwtVo currentUser) {
         //查询是否有这个角色
         Role role = roleMapper.selectById(roleAuthorityVo.getRoleId());
         if(role==null){
             throw new BizException(ErrorCode.Role_Id_Invalid);
         }
-        if(roleName(roleAuthorityVo)){
+        if(roleName(roleAuthorityVo.getRoleName(),roleAuthorityVo.getRoleId())){
             throw new BizException(ErrorCode.Role_Name_Existed);
         }
         //跟新角色信息
         BeanUtil.copyProperties(roleAuthorityVo,role);
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.updateById(role);
-        //先删除之前的所有绑定关系
-        roleAuthorityRelMapper.delAllRoleAuthority(roleAuthorityVo.getRoleId());
-        //插入新的绑定关系
-        for(String authorityId : roleAuthorityVo.getAuthoritys()){
-            RoleAuthorityRel roleAuthorityRel = new RoleAuthorityRel();
-            roleAuthorityRel.setRoleAuthorityRelId(commonService.getSequence("ROLE_AUTHORITY_REL",null));
-            roleAuthorityRel.setRoleId(role.getRoleId());
-            roleAuthorityRel.setAuthorityId(authorityId);
-            roleAuthorityRel.setCreator(currentUser.getId());
-            roleAuthorityRel.setCreateTime(LocalDateTime.now());
-            roleAuthorityRelMapper.insert(roleAuthorityRel);
+
+        List<RoleAuthorityGroupVo> authorities =roleAuthorityVo.getAuthoritys();
+        List<RoleAuthorityRel> roleAuthorityRels=new ArrayList<>();
+        for (RoleAuthorityGroupVo menu:authorities) {
+            if(menu.getMenu().getAuthorityType()!=1) {
+                //添加菜单权限选择
+                RoleAuthorityRel roleAuthority = new RoleAuthorityRel();
+                roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityId());
+                roleAuthority.setDel(menu.getMenu().getIsEnable());
+                roleAuthorityRels.add(roleAuthority);
+
+                //添加按钮权限选择
+                List<RoleAuthorityVo> roleAuthorityVos = menu.getAuthorities();
+                for (RoleAuthorityVo roleAuthorityVo1 : roleAuthorityVos) {
+
+                    roleAuthorityVo1 = new RoleAuthorityVo();
+                    roleAuthorityVo1.setRoleAuthorityId(roleAuthorityVo1.getRoleAuthorityId());
+                    roleAuthorityVo1.setIsEnable(roleAuthorityVo1.getIsEnable());
+                    roleAuthorityRels.add(roleAuthority);
+                }
+            }
+        }
+
+        QueryWrapper<RoleAuthorityRel> wrapper=new QueryWrapper<>();
+        wrapper.eq("role_id",roleAuthorityVo.getRoleId());
+        List<RoleAuthorityRel> resultDoList=roleAuthorityRelMapper.selectList(wrapper);
+
+        //赋值 resultDoList
+        for (RoleAuthorityRel roleAuthority:resultDoList) {
+            RoleAuthorityRel sourceRoleAuthority=roleAuthorityRels.stream().filter(roleAuthorityRel -> roleAuthorityRel.getRoleAuthorityRelId().equals(roleAuthority.getRoleAuthorityRelId())).findFirst().get();
+            roleAuthority.setDel(sourceRoleAuthority.isDel());
+            roleAuthorityRelMapper.updateById(roleAuthority);
         }
 
     }
 
-    public boolean roleName(RoleAuthorityVo roleAuthorityVo){
+    public boolean roleName(String roleName, String roleId){
         //查询是否有重名
         QueryWrapper<Role> roleQueryWrapper = new QueryWrapper<>();
-        roleQueryWrapper.eq("role_name",roleAuthorityVo.getRoleName());
-        if(StringUtils.isEmpty(roleAuthorityVo.getRoleId())) {
-            roleQueryWrapper.ne("role_id", roleAuthorityVo.getRoleId());
+        roleQueryWrapper.eq("role_name",roleName);
+        if(StringUtils.isEmpty(roleId)) {
+            roleQueryWrapper.ne("role_id", roleId);
         }
         roleQueryWrapper.eq("is_del",true);
         Role role = roleMapper.selectOne(roleQueryWrapper);
@@ -127,7 +149,48 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
-    public List<RoleVo> getList() {
-        return roleMapper.getList();
+    public List<RoleVo> getList(IPage page, String selectStringKey) {
+        return roleMapper.getList(page,selectStringKey);
+    }
+
+
+
+    @Override
+    public Response getAuthorityList(String roleId) {
+            List<SysRoleAuthorityView> roleAuthorities = roleAuthorityRelMapper.getList(roleId);
+
+            List<SysRoleAuthorityView> menus = roleAuthorities.stream().filter(sysRoleAuthority -> sysRoleAuthority.getAuthorityType() == CommonEnum.AuthorityType.Menu.getValue()).collect(Collectors.toList());
+            List<RoleAuthorityGroupVo> resultVo = new ArrayList<>();
+            for (SysRoleAuthorityView menu : menus) {
+                //获取菜单
+                RoleAuthorityGroupVo roleAuthorityGroupVo = new RoleAuthorityGroupVo();
+                RoleAuthorityVo roleAuthorityVo = new RoleAuthorityVo();
+
+                //赋值菜单vo
+                BeanUtil.copyProperties(menu, roleAuthorityVo);
+                roleAuthorityGroupVo.setMenu(roleAuthorityVo);
+
+                //获取权限列表
+                List<SysRoleAuthorityView> buttons = new ArrayList<>();
+                for (SysRoleAuthorityView s : roleAuthorities) {
+                    if (s.getParentAuthorityId() != null) {
+                        if (s.getParentAuthorityId().equals(menu.getAuthorityId())) {
+                            buttons.add(s);
+                        }
+                    }
+                }
+                //赋值权限vo列表
+                List<RoleAuthorityVo> roleAuthorityVos = BeanUtil.copyListProperties(buttons, RoleAuthorityVo.class);
+                roleAuthorityGroupVo.setAuthorities(roleAuthorityVos);
+
+                //vo 添加到result list
+                resultVo.add(roleAuthorityGroupVo);
+            }
+            if (roleAuthorities != null) {
+                return Response.success("角色权限列表获取成功", resultVo);
+            }
+
+
+        return Response.fail(ErrorCode.Role_Auth_List_Get_Error);
     }
 }

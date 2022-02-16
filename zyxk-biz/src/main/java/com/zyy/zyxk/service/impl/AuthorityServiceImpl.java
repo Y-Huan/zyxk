@@ -1,9 +1,11 @@
 package com.zyy.zyxk.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.BizException;
 import com.zyy.zyxk.common.util.BeanUtil;
@@ -89,9 +91,9 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
     }
 
     @Override
-    public List<AuthorityVo> getList() {
+    public List<AuthorityVo> getList(IPage page, BaseSelectVo baseSelectVo) {
         //查询信息返回
-        return sysAuthorityMapper.getList();
+        return sysAuthorityMapper.getList(page,baseSelectVo.getSelectStringKey());
     }
 
     public boolean authorityName(AuthorityVo authorityVo){
