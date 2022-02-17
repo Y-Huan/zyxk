@@ -13,6 +13,9 @@ import com.zyy.zyxk.dao.entity.Teacher;
 import com.zyy.zyxk.service.LoginService;
 import com.zyy.zyxk.service.RedisService;
 import com.zyy.zyxk.service.util.JwtUtil;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,12 +51,11 @@ public class LoginServiceImpl implements LoginService {
         }
         LoginVo loginVo = teacherMapper.getLogin(userName);
         UserJwtVo userJwtVo = new UserJwtVo();
-        BeanUtil.copyProperties(teacher, userJwtVo);
+        BeanUtil.copyProperties(loginVo, userJwtVo);
         String token = JwtUtil.generateToken(userJwtVo);
         redisService.setToken(userJwtVo.getId(), token);
         loginVo.setToken(token);
-
-        return null;
+        return loginVo;
     }
 
     @Override
@@ -70,5 +72,24 @@ public class LoginServiceImpl implements LoginService {
             throw new AuthenticationException("登录失败：密码错误");
         }
         return null;
+    }
+
+    //导入教师信息
+    @Override
+    public boolean teacherInfo(Workbook excelInfo, UserJwtVo currentUser) {
+
+        Sheet sheet = excelInfo.getSheetAt(0); //默认取第一个sheet
+        int rowsNum = sheet.getLastRowNum();//获取最后一行的行标
+        for(int j=3; j<rowsNum+1;j++) { //第一，二行为表头，所以从第三行开始
+            Row row = sheet.getRow(j);
+            if (row != null) {
+                //取出所需要的信息
+
+
+
+            }
+
+        }
+        return true;
     }
 }

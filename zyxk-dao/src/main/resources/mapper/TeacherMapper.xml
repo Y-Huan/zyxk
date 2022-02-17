@@ -5,8 +5,7 @@
         select
             t.teacher_id,
             t.teacher_name,
-            r.role_id,
-            r.role_name,
+            t.school_id,
             sa.authority_permission
         from teacher t
         left join teacher_role_rel trr on trr.teacher_id = t.teacher_id

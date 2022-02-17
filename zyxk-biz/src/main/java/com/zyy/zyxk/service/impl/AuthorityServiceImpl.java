@@ -12,7 +12,6 @@ import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.dao.SysAuthorityMapper;
 import com.zyy.zyxk.dao.entity.SysAuthority;
 import com.zyy.zyxk.service.AuthorityService;
-import com.zyy.zyxk.service.common.CommonService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +31,6 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
     @Autowired
     private SysAuthorityMapper sysAuthorityMapper;
 
-    @Autowired
-    private CommonService commonService;
 
     @Override
     @Transactional
@@ -45,8 +42,6 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
         SysAuthority sysAuthority = new SysAuthority();
         //将传入的信息映射到实体
         BeanUtil.copyProperties(authorityVo,sysAuthority);
-        //获取ID
-//        sysAuthority.setAuthorityId(commonService.getSequence("SYS_AUTHORITY",null));
         //设置更新时间
         sysAuthority.setCreateTime(LocalDateTime.now());
         //设置创建人

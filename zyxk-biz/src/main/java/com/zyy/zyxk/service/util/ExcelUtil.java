@@ -1,9 +1,17 @@
 package com.zyy.zyxk.service.util;
 
+import com.zyy.zyxk.common.constant.ErrorCode;
+import com.zyy.zyxk.common.exception.BizException;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author Yang.H
@@ -49,5 +57,35 @@ public class ExcelUtil {
         // 设置垂直对齐的样式为居中对齐;
         style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
         return style;
+    }
+
+    public static Workbook  getExcelInfo(MultipartFile file)throws IOException{
+        // 1.创建workbook对象，读取整个文档
+        InputStream inputStream = null;
+        Workbook wb = null;
+        try {
+            if (file.isEmpty()) {
+                throw new BizException(ErrorCode.EXCL_NULL_ERROR);
+            }
+            String filename=file.getOriginalFilename();
+            inputStream = file.getInputStream();
+            //得到excel
+
+            String fileType = filename.substring(filename.lastIndexOf("."));
+            if((".xls").equals(fileType))
+            {
+                wb = new HSSFWorkbook(inputStream);  //2003-
+            }else if((".xlsx").equals(fileType))
+            {
+                wb = new XSSFWorkbook(inputStream);  //2007+
+            }else
+            {
+                throw new BizException(ErrorCode.BIND_ERROR);
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return wb;
     }
 }

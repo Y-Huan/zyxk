@@ -18,7 +18,6 @@ import com.zyy.zyxk.dao.RoleAuthorityRelMapper;
 import com.zyy.zyxk.dao.RoleMapper;
 import com.zyy.zyxk.dao.entity.Role;
 import com.zyy.zyxk.dao.entity.RoleAuthorityRel;
-import com.zyy.zyxk.service.common.CommonService;
 import com.zyy.zyxk.service.role.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -44,9 +43,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     private RoleMapper roleMapper;
 
     @Autowired
-    private CommonService commonService;
-
-    @Autowired
     private RoleAuthorityRelMapper roleAuthorityRelMapper;
 
     @Override
@@ -58,7 +54,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         }
         //设置信息新增
         Role role = new Role();
-        role.setRoleId(commonService.getSequence("ROLE",null));
         role.setRoleName(roleVo.getRoleName());
         role.setCreator(currentUser.getId());
         role.setCreateTime(LocalDateTime.now());

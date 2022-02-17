@@ -1,18 +1,27 @@
 package com.zyy.zyxk.web.controller;
 
 import com.zyy.zyxk.api.vo.LoginVo;
+import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.common.annotation.FreeAuthentication;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.LoginService;
+import com.zyy.zyxk.service.util.ExcelUtil;
+import com.zyy.zyxk.service.util.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author Yang.H
@@ -54,7 +63,16 @@ public class LoginController {
         return Response.success("登录成功",loginVo);
     }
 
-    //测试
+    @PostMapping("teacherInfo")
+    @ApiOperation("教师信息导入")
+    public Response teacherInfo (@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+        if(!loginService.teacherInfo(ExcelUtil.getExcelInfo(file),currentUser)){
+            return Response.fail(ErrorCode.BAD_PARAM);
+        }
+        return Response.success("导入成功");
+    }
 
 
 

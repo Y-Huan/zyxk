@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.AuthorityVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
-import com.zyy.zyxk.common.annotation.FreeAuthentication;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.AuthorityService;
@@ -35,7 +34,7 @@ public class AuthorityController {
     private AuthorityService authorityService;
 
     @PostMapping("addAuthority")
-    @FreeAuthentication
+
     @ApiOperation("新增权限")
     public Response addAuthority(@RequestBody AuthorityVo authorityVo){
 //        String token = request.getHeader("token");, HttpServletRequest request

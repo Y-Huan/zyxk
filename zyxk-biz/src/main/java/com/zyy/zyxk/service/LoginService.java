@@ -1,6 +1,8 @@
 package com.zyy.zyxk.service;
 
 import com.zyy.zyxk.api.vo.LoginVo;
+import com.zyy.zyxk.api.vo.UserJwtVo;
+import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  * @author Yang.H
@@ -12,4 +14,6 @@ public interface LoginService {
     LoginVo teacherLogin(String userName, String password);
     //学生登录
     LoginVo studentLogin(String userName, String password);
+    //导入教师信息
+    boolean teacherInfo(Workbook excelInfo, UserJwtVo currentUser);
 }

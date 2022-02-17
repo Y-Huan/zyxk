@@ -13,7 +13,7 @@ public class UserJwtVo {
 
     private String Phone;
 
-    private String realName;
+    private String userName;
 
-    private String claseId;
+    private String schoolId;
 }
