@@ -31,6 +31,8 @@ public class Student implements Serializable{
 
     private String studentNumber;
 
+    private String schoolId;
+
     private String claseId;
 
     private String studentName;
@@ -49,7 +51,7 @@ public class Student implements Serializable{
 
     private LocalDateTime updateTime;
 
-    private boolean isDel;
+    private Boolean isDel;
 
 
 }

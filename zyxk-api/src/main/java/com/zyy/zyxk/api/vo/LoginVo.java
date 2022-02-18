@@ -16,6 +16,8 @@ public class LoginVo {
 
     private String userName;
 
+    private String phone;
+
     private String schoolId;
 
     private List<String> authorityPermission;

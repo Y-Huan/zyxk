@@ -22,5 +22,5 @@ public class UpdateMajorVo {
 
     private LocalDateTime updateTime;
 
-    private boolean isDel;
+    private Boolean isDel;
 }

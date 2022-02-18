@@ -5,6 +5,7 @@
         select
             t.teacher_id,
             t.teacher_name,
+            t.phone,
             t.school_id,
             sa.authority_permission
         from teacher t

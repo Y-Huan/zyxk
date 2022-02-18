@@ -57,7 +57,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         role.setRoleName(roleVo.getRoleName());
         role.setCreator(currentUser.getId());
         role.setCreateTime(LocalDateTime.now());
-        role.setDel(true);
+        role.setIsDel(true);
         roleMapper.insert(role);
 
     }
@@ -72,7 +72,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         if(role == null){
             throw new BizException(ErrorCode.Role_Id_Invalid);
         }
-        role.setDel(false);
+        role.setIsDel(false);
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.updateById(role);
     }
@@ -99,13 +99,12 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
                 //添加菜单权限选择
                 RoleAuthorityRel roleAuthority = new RoleAuthorityRel();
                 roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityId());
-                roleAuthority.setDel(menu.getMenu().getIsEnable());
+                roleAuthority.setIsDel(menu.getMenu().getIsEnable());
                 roleAuthorityRels.add(roleAuthority);
 
                 //添加按钮权限选择
                 List<RoleAuthorityVo> roleAuthorityVos = menu.getAuthorities();
                 for (RoleAuthorityVo roleAuthorityVo1 : roleAuthorityVos) {
-
                     roleAuthorityVo1 = new RoleAuthorityVo();
                     roleAuthorityVo1.setRoleAuthorityId(roleAuthorityVo1.getRoleAuthorityId());
                     roleAuthorityVo1.setIsEnable(roleAuthorityVo1.getIsEnable());
@@ -121,8 +120,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         //赋值 resultDoList
         for (RoleAuthorityRel roleAuthority:resultDoList) {
             RoleAuthorityRel sourceRoleAuthority=roleAuthorityRels.stream().filter(roleAuthorityRel -> roleAuthorityRel.getRoleAuthorityRelId().equals(roleAuthority.getRoleAuthorityRelId())).findFirst().get();
-            roleAuthority.setDel(sourceRoleAuthority.isDel());
-            roleAuthorityRelMapper.updateById(roleAuthority);
+            roleAuthority.setIsDel(sourceRoleAuthority.getIsDel());
+            roleAuthorityRelMapper.insertRoleAuthority(roleAuthority.getRoleAuthorityRelId(),roleAuthority.getRoleId(),roleAuthority.getAuthorityId(),roleAuthority.getCreator(),roleAuthority.getIsDel());
         }
 
     }

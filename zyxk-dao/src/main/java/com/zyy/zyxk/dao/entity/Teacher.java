@@ -33,6 +33,8 @@ public class Teacher implements Serializable{
 
     private String teacherName;
 
+    private String schoolId;
+
     private String roleId;
 
     private String password;
@@ -47,7 +49,7 @@ public class Teacher implements Serializable{
 
     private LocalDateTime updateTime;
 
-    private boolean isDel;
+    private Boolean isDel;
 
 
 }

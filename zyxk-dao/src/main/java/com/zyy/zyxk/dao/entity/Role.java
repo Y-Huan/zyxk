@@ -37,7 +37,7 @@ public class Role implements Serializable{
 
     private LocalDateTime updateTime;
 
-    private boolean isDel;
+    private Boolean isDel;
 
 
 }

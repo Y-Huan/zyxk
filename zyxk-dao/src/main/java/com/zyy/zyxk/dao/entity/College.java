@@ -41,7 +41,7 @@ public class College implements Serializable{
 
     private LocalDateTime updateTime;
 
-    private boolean isDel;
+    private Boolean isDel;
 
 
 }

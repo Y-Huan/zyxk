@@ -27,5 +27,5 @@ public class InsertMajorVo {
 
     private LocalDateTime updateTime;
 
-    private boolean isDel;
+    private Boolean isDel;
 }

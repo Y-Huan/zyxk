@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.RoleAuthorityRelMapper">
+    <insert id="insertRoleAuthority">
+        insert into role_authority_rel
+            (role_authority_rel_id,role_id,authority_id,creator,create_time,is_del)
+        VALUE (#{roleAuthorityRelId},#{roleId},#{authorityId},#{creator},now(),#{isDel})
+        ON DUPLICATE KEY UPDATE is_del = #{isDel},update_time = now()
+    </insert>
     <update id="delAllRoleAuthority">
         update role_authority_rel
             set
@@ -13,6 +19,7 @@
         from sys_authority a
                  left join role_authority_rel ra on a.authority_id=ra.authority_id
 								 AND ra.role_id=#{roleId}
+		where a.is_del = 1
         order by a.parent_authority_id;
     </select>
 </mapper>

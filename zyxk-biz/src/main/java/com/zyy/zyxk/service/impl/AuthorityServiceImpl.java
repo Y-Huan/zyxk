@@ -60,7 +60,7 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
             throw new BizException(ErrorCode.BIND_ERROR);
         }
         //设置无效
-        sysAuthority.setDel(false);
+        sysAuthority.setIsDel(false);
         //跟新数据
         sysAuthorityMapper.updateById(sysAuthority);
     }

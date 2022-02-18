@@ -16,4 +16,10 @@ public interface RoleAuthorityRelMapper extends BaseMapper<RoleAuthorityRel> {
     void delAllRoleAuthority(@Param("roleId") String roleId);
 
     List<SysRoleAuthorityView> getList(@Param("roleId") String roleId);
+
+    void insertRoleAuthority(@Param("roleAuthorityRelId") String roleAuthorityRelId,
+                             @Param("roleId") String roleId,
+                             @Param("authorityId") String authorityId,
+                             @Param("creator") String creator,
+                             @Param("isDel") Boolean isDel);
 }
