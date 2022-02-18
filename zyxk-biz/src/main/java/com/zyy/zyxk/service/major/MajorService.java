@@ -1,6 +1,7 @@
 package com.zyy.zyxk.service.major;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.major.InsertMajorVo;
 import com.zyy.zyxk.api.vo.major.MajorListVo;
 import com.zyy.zyxk.api.vo.major.SelectMajorVo;
@@ -34,8 +35,9 @@ public interface MajorService extends IService<Major> {
     /**
      * 增加专业
      * @param insertMajorVo
+     * @param currentUser
      */
-    void addMajor(InsertMajorVo insertMajorVo);
+    void addMajor(InsertMajorVo insertMajorVo, UserJwtVo currentUser);
 
     /**
      * 删除专业
@@ -47,5 +49,5 @@ public interface MajorService extends IService<Major> {
      * 修改专业
      * @param updateMajorVo
      */
-    void updateMajor(UpdateMajorVo updateMajorVo);
+    void updateMajor(UpdateMajorVo updateMajorVo, UserJwtVo currentUser);
 }

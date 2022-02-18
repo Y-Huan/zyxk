@@ -52,6 +52,8 @@ public enum ErrorCode {
     AUTHORITY_NAME_ERROR(10030,"权限名已存在"),
     ROLE_PLESE_ADD(10068,"请先创建角色"),
     Major_Name_existed(10050,"该专业名称已存在"),
+    Major_Id_Invalid(10025,"无效的专业id"),
+    No_Major_Name(409,"专业名称不能为空"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),

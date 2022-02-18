@@ -1,16 +1,21 @@
 package com.zyy.zyxk.service.major.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.major.InsertMajorVo;
 import com.zyy.zyxk.api.vo.major.MajorListVo;
 import com.zyy.zyxk.api.vo.major.SelectMajorVo;
 import com.zyy.zyxk.api.vo.major.UpdateMajorVo;
+import com.zyy.zyxk.common.constant.ErrorCode;
+import com.zyy.zyxk.common.exception.BizException;
 import com.zyy.zyxk.dao.MajorMapper;
 import com.zyy.zyxk.dao.entity.Major;
 import com.zyy.zyxk.service.major.MajorService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -56,8 +61,15 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
      * @param insertMajorVo
      */
     @Override
-    public void addMajor(InsertMajorVo insertMajorVo) {
-
+    public void addMajor(InsertMajorVo insertMajorVo, UserJwtVo currentUser) {
+        Major major = new Major();
+        major.setDel(true);
+        major.setCreator(currentUser.getId());
+        major.setCreateTime(LocalDateTime.now());
+        major.setMajorName(insertMajorVo.getMajorName());
+        major.setCollegeId(insertMajorVo.getCollegeId());
+        major.setPersonInChargeId(insertMajorVo.getPersonInChargeId());
+        majorMapper.insert(major);
     }
 
     /**
@@ -67,7 +79,16 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
      */
     @Override
     public void deleteMajor(String majorId) {
-
+        QueryWrapper<Major> majorQueryWrapper = new QueryWrapper<>();
+        majorQueryWrapper.eq("major_id",majorId);
+        majorQueryWrapper.eq("is_del",true);
+        Major major= majorMapper.selectOne(majorQueryWrapper);
+        if(major == null){
+            throw new BizException(ErrorCode.Major_Id_Invalid);
+        }
+        major.setDel(false);
+        major.setUpdateTime(LocalDateTime.now());
+        majorMapper.updateById(major);
     }
 
     /**
@@ -76,7 +97,9 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
      * @param updateMajorVo
      */
     @Override
-    public void updateMajor(UpdateMajorVo updateMajorVo) {
-
+    public void updateMajor(UpdateMajorVo updateMajorVo, UserJwtVo currentUser) {
+            updateMajorVo.setUpdateTime(LocalDateTime.now());
+            updateMajorVo.setCreator(currentUser.getUserName());
+            majorMapper.updateMajor(updateMajorVo);
     }
 }

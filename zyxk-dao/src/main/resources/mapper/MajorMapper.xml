@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.MajorMapper">
+
     <select id="selectMajorList" resultType="com.zyy.zyxk.api.vo.major.MajorListVo">
         select  m.major_id as majorId,
                 m.major_name as majorName,
@@ -39,4 +40,16 @@
         left join teacher t on m.person_in_charge_id = t.teacher_id
         where m.major_id = #{majorId}
     </select>
+
+    <update id="updateMajor">
+        update major
+        <set>
+            <if test="majorName != null and majorName != ''">major_name = #{majorName} </if>
+            <if test="collegeId != null and collegeId != ''">college_id = #{collegeId} </if>
+            <if test="personInChargeId != null and personInChargeId != ''">person_in_charge_id = #{personInChargeId} </if>
+            <if test="updateTime != null">update_time = #{updateTime} </if>
+            <if test="creator != null">creator = #{creator} </if>
+        </set>
+        where major_id = #{majorId}
+    </update>
 </mapper>
