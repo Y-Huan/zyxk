@@ -8,4 +8,13 @@
         where sa.is_del = true
             and sa.authority_name = #{selectKey}
     </select>
+    <select id="getUserAuthorityAll" resultType="java.lang.String">
+        select
+            sa.authority_permission
+        from teacher t
+        left join teacher_role_rel trr on trr.teacher_id = t.teacher_id
+        left join role_authority_rel rar on rar.role_id = trr.role_id
+        left join sys_authority sa on sa.authority_id = rar.authority_id
+        where t.teacher_id = #{id} and t.is_del = 1
+    </select>
 </mapper>

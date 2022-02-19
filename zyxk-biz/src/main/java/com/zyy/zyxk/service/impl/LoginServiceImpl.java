@@ -3,7 +3,9 @@ package com.zyy.zyxk.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zyy.zyxk.api.vo.LoginVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.AuthenticationException;
+import com.zyy.zyxk.common.exception.BizException;
 import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.common.util.EncryptUtil;
 import com.zyy.zyxk.dao.StudentMapper;
@@ -18,6 +20,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
@@ -71,7 +74,7 @@ public class LoginServiceImpl implements LoginService {
         teacherQueryWrapper.eq("is_valid",true);
         Student student =  studentMapper.selectOne(teacherQueryWrapper);
         if (student == null) {
-            throw new AuthenticationException("登录失败：该手机号不存在");
+            throw new AuthenticationException("登录失败：该学号不存在");
         }
 
         if (!student.getPassword().equals(EncryptUtil.encryptPassword(password,student.getSalt()))) {
@@ -101,23 +104,27 @@ public class LoginServiceImpl implements LoginService {
 
     //导入教师信息
     @Override
+    @Transactional
     public boolean teacherInfo(Workbook excelInfo, UserJwtVo currentUser) {
         Sheet sheet = excelInfo.getSheetAt(0); //默认取第一个sheet
         int rowsNum = sheet.getLastRowNum();//获取最后一行的行标
         for(int j=2; j<rowsNum+1;j++) { //第一行为表头，所以从第二行开始
             Row row = sheet.getRow(j);
             if (row != null) {
+                //判断手机号是否重复
+                QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
+                teacherQueryWrapper.eq("phone",row.getCell(2).toString());
+                teacherQueryWrapper.eq("is_del",true);
+                Teacher teacher1 = teacherMapper.selectOne(teacherQueryWrapper);
+                if(teacher1!=null){
+                    throw new BizException(ErrorCode.USER_EXISTED);
+                }
+
                 //取出所需要的信息
                 Teacher teacher = new Teacher();
                 teacher.setTeacherName(row.getCell(1).toString());
                 teacher.setPhone(row.getCell(2).toString());
-                if("男".equals(row.getCell(3).toString())){
-                    teacher.setSex(1);
-                }else if("女".equals(row.getCell(3).toString())){
-                    teacher.setSex(2);
-                }else {
-                    teacher.setSex(0);
-                }
+                teacher.setSex(sex(row.getCell(3).toString()));
                 teacher.setSalt(salt());
                 teacher.setPassword(EncryptUtil.encryptPassword(teacher.getPhone(), teacher.getSalt()));
                 teacher.setSchoolId(currentUser.getSchoolId());
@@ -130,5 +137,47 @@ public class LoginServiceImpl implements LoginService {
         return true;
     }
 
+    //判断性别
+    public Integer sex(String sex){
+        if("男".equals(sex)){
+            return 1;
+        }else if("女".equals(sex)){
+            return 2;
+        }else {
+            return 0;
+        }
+    }
 
+    @Override
+    public boolean studentInfo(Workbook excelInfo, UserJwtVo currentUser,String cleasId) {
+        Sheet sheet = excelInfo.getSheetAt(0); //默认取第一个sheet
+        int rowsNum = sheet.getLastRowNum();//获取最后一行的行标
+        for(int j=2; j<rowsNum+1;j++) { //第一行为表头，所以从第二行开始
+            Row row = sheet.getRow(j);
+            if (row != null) {
+                QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
+                studentQueryWrapper.eq("student_number",row.getCell(1).toString());
+                studentQueryWrapper.eq("is_valid",true);
+                Student student1 = studentMapper.selectOne(studentQueryWrapper);
+                if(student1!=null){
+                    throw new BizException(ErrorCode.USER_EXISTED);
+                }
+                //取出所需要的信息
+               Student student = new Student();
+               student.setStudentNumber(row.getCell(1).toString());
+               student.setStudentName(row.getCell(2).toString());
+               student.setClaseId(cleasId);
+               student.setSchoolId(currentUser.getSchoolId());
+               student.setPhone(row.getCell(3).toString());
+               student.setSex(sex(row.getCell(4).toString()));
+               student.setSalt(salt());
+               student.setPassword(EncryptUtil.encryptPassword(student.getPhone(),student.getSalt()));
+               student.setCreator(currentUser.getId());
+               student.setCreateTime(LocalDateTime.now());
+               student.setIsDel(true);
+               studentMapper.insert(student);
+            }
+        }
+        return true;
+    }
 }

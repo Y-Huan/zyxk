@@ -12,16 +12,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * @author Yang.H
@@ -69,6 +65,17 @@ public class LoginController {
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
         if(!loginService.teacherInfo(ExcelUtil.getExcelInfo(file),currentUser)){
+            return Response.fail(ErrorCode.BAD_PARAM);
+        }
+        return Response.success("导入成功");
+    }
+
+    @PostMapping("studentInfo")
+    @ApiOperation("学生信息导入")
+    public Response studentInfo (@RequestParam("file") MultipartFile file,String cleasId, HttpServletRequest request) throws IOException {
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+        if(!loginService.studentInfo(ExcelUtil.getExcelInfo(file),currentUser,cleasId)){
             return Response.fail(ErrorCode.BAD_PARAM);
         }
         return Response.success("导入成功");

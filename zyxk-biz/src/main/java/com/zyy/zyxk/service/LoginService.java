@@ -16,4 +16,6 @@ public interface LoginService {
     LoginVo studentLogin(String userName, String password);
     //导入教师信息
     boolean teacherInfo(Workbook excelInfo, UserJwtVo currentUser);
+    //导入学生信息
+    boolean studentInfo(Workbook excelInfo, UserJwtVo currentUser,String cleasId);
 }

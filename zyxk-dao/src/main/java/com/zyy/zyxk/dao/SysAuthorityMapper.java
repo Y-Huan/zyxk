@@ -16,4 +16,6 @@ import java.util.List;
 public interface SysAuthorityMapper extends BaseMapper<SysAuthority> {
 
     List<AuthorityVo> getList(IPage page,@Param("selectKey") String selectKey);
+
+    List<String> getUserAuthorityAll(@Param("id") String id);
 }

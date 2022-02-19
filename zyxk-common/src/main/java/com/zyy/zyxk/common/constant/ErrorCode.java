@@ -54,14 +54,14 @@ public enum ErrorCode {
     Major_Name_existed(10050,"该专业名称已存在"),
     Major_Id_Invalid(10025,"无效的专业id"),
     No_Major_Name(409,"专业名称不能为空"),
+    SCHOOOL_NAME_NOT_NULL(10034,"学校名已存在"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),
     JWT_ERROR(99920,"认证失败,请重新登录后尝试"),
     COMMON_ERROR(99999, "操作失败"),
     EXCL_NULL_ERROR(99930,"EXCL为空"),
-    EXCL_TYPE_ERROR(99940,"文件格式错误"),
-    SIGN_TIME_ERROR(99950,"签名已过期");
+    EXCL_TYPE_ERROR(99940,"文件格式错误");
 
 
 
