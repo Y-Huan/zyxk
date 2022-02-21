@@ -38,7 +38,7 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("addRple")
-    @ApiOperation("新增角色")
+    @ApiOperation(value = "新增角色" ,notes = "新增角色")
     public Response addRole(@RequestBody RoleVo roleVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
@@ -55,7 +55,7 @@ public class RoleController {
     }
 
     @PostMapping("delRole")
-    @ApiOperation("删除角色")
+    @ApiOperation(value = "删除角色",notes = "删除角色")
     public Response delRole(@RequestBody String roleId){
         if(StringUtils.isEmpty(roleId)){
             return Response.fail(ErrorCode.Role_Id_Invalid);
@@ -70,7 +70,7 @@ public class RoleController {
     }
 
     @PostMapping("updateRole")
-    @ApiOperation("编辑角色")
+    @ApiOperation(value = "编辑角色" ,notes = "编辑角色")
     public Response upodateRole(@RequestBody RoleAuthorityListVo roleAuthorityVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
@@ -89,7 +89,7 @@ public class RoleController {
     }
 
     @GetMapping("list")
-    @ApiOperation("角色列表")
+    @ApiOperation(value = "角色列表",notes = "角色列表")
     public Response list(BaseSelectVo baseSelectVo){
         List<RoleVo> roleVos = new ArrayList<>();
         try {
@@ -103,7 +103,7 @@ public class RoleController {
     }
 
     @GetMapping("roleAuthorityList")
-    @ApiOperation("获取角色权限列表")
+    @ApiOperation(value = "获取角色权限列表",notes = "获取角色权限列表")
     public  Response roleAuthorityList(String roleId){
         if(roleId ==null){
             return Response.fail(ErrorCode.No_Role_Id);

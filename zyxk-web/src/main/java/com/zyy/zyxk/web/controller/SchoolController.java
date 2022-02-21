@@ -6,7 +6,6 @@ import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.school.SchoolService;
 import com.zyy.zyxk.service.util.JwtUtil;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class SchoolController {
     private SchoolService schoolService;
 
     @PostMapping("addSchool")
-    @ApiOperation("新增学校")
+    @ApiOperation(value = "新增学校",notes = "新增学校")
     public Response add(SchoolVo schoolVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
@@ -44,7 +43,7 @@ public class SchoolController {
     }
 
     @PostMapping("delSchool")
-    @ApiModelProperty("删除学校")
+    @ApiOperation(value = "删除学校",notes = "删除学校")
     public Response delSchool(String schoolId,HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);

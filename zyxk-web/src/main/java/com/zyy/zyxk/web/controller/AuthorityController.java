@@ -35,7 +35,7 @@ public class AuthorityController {
 
     @PostMapping("addAuthority")
 
-    @ApiOperation("新增权限")
+    @ApiOperation(value = "新增权限",notes = "新增权限")
     public Response addAuthority(@RequestBody AuthorityVo authorityVo){
 //        String token = request.getHeader("token");, HttpServletRequest request
 //        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
@@ -54,7 +54,7 @@ public class AuthorityController {
     }
 
     @PostMapping("delAuthority")
-    @ApiOperation("删除权限")
+    @ApiOperation(value = "删除权限",notes ="删除权限" )
     public Response delAuthority(@RequestBody String authorityId){
         if(StringUtils.isEmpty(authorityId)){
             return Response.fail(ErrorCode.BIND_ERROR);
@@ -68,7 +68,7 @@ public class AuthorityController {
     }
 
     @PostMapping("updateAuthority")
-    @ApiOperation("修改权限")
+    @ApiOperation(value = "修改权限",notes ="修改权限" )
     public Response updateAuthority(@RequestBody AuthorityVo authorityVo){
         if(authorityVo.getAuthorityType() == null){
             return Response.fail(ErrorCode.AUTHORITY_TYPE_NULL);
@@ -85,7 +85,7 @@ public class AuthorityController {
     }
 
     @GetMapping("list")
-    @ApiOperation("权限列表")
+    @ApiOperation(value = "权限列表",notes ="权限列表" )
     public Response list(BaseSelectVo baseSelectVo){
         List<AuthorityVo> authorityVos = new ArrayList<>();
         try{
