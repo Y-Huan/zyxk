@@ -13,4 +13,6 @@ import com.zyy.zyxk.dao.entity.School;
 public interface SchoolService extends IService<School> {
     //新增学校
     void add(SchoolVo schoolVo, UserJwtVo currentUser);
+    //删除学校
+    void delSchool(String schoolId, UserJwtVo currentUser);
 }

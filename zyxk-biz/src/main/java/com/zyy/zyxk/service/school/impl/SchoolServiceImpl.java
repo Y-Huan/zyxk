@@ -14,6 +14,7 @@ import com.zyy.zyxk.service.school.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -36,6 +37,7 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolMapper, School> impleme
         if(!checkAuthority(currentUser.getId())){
             throw new BizException(ErrorCode.NO_AUTH);
         }
+        //判断学校名是否有重复
         QueryWrapper<School> schoolQueryWrapper = new QueryWrapper<>();
         schoolQueryWrapper.eq("school_name",schoolVo.getSchoolName());
         schoolQueryWrapper.eq("is_valid",true);
@@ -45,8 +47,9 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolMapper, School> impleme
         }
         School school = new School();
         BeanUtil.copyProperties(schoolVo,school);
-
-
+        school.setCreator(currentUser.getId());
+        school.setCreateTime(LocalDateTime.now());
+        schoolMapper.insert(school);
     }
 
     public boolean checkAuthority(String id){
@@ -58,5 +61,11 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolMapper, School> impleme
             }
         }
         return false;
+    }
+
+
+    @Override
+    public void delSchool(String schoolId, UserJwtVo currentUser) {
+
     }
 }

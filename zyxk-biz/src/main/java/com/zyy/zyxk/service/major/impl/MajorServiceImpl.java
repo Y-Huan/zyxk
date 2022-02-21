@@ -63,7 +63,7 @@ public class MajorServiceImpl extends ServiceImpl<MajorMapper, Major> implements
     @Override
     public void addMajor(InsertMajorVo insertMajorVo, UserJwtVo currentUser) {
         Major major = new Major();
-        major.setDel(true);
+        major.setIDel(true);
         major.setCreator(currentUser.getId());
         major.setCreateTime(LocalDateTime.now());
         major.setMajorName(insertMajorVo.getMajorName());
