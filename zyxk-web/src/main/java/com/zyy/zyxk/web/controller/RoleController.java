@@ -37,7 +37,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @PostMapping("addRple")
+    @PostMapping("addRole")
     @ApiOperation(value = "新增角色" ,notes = "新增角色")
     public Response addRole(@RequestBody RoleVo roleVo, HttpServletRequest request){
         String token = request.getHeader("token");
