@@ -1,4 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.ClaseMapper">
+
+    <select id="selectClaseList" resultType="com.zyy.zyxk.api.vo.clase.ClaseListVo">
+        select
+            c.clase_id as claseId,
+            c.clase_name as claseName,
+            c.major_id as majorId,
+            c.instructor as instructor,
+            c.teacher_id as teacherId,
+            t.name as headmasterName,
+            t.phone as headmasterPhone,
+            m.major_name as majorName
+        from clase c
+        left join teacher t on c.teacher_id = t.teacher_id
+        left join major m on c.major_id = m.major_id
+        where c.is_del = true
+        <if test="claseName != null and claseName != ''">
+            and c.clase_name like '%${claseName}%'
+        </if>
+        <if test="teacherName != null and teacherName != ''">
+            and t.name like '%${teacherName}%'
+        </if>
+        <if test="phone != null and phone != ''">
+            and t.phone like '%${phone}%'
+        </if>
+        <if test="majorName != null and majorName != ''">
+            and m.major_name like '%${majorName}%'
+        </if>
+    </select>
+
+    <select id="selectClaseById" resultType="com.zyy.zyxk.dao.entity.Clase">
+        select
+            c.clase_id as claseId,
+            c.clase_name as claseName,
+            c.major_id as majorId,
+            c.instructor as instructor,
+            c.teacher_id as teacherId,
+            t.name as headmasterName,
+            t.phone as headmasterPhone,
+            m.major_name as majorName
+        from clase c
+        left join teacher t on c.teacher_id = t.teacher_id
+        left join major m on c.major_id = m.major_id
+        where c.clase_id = #{claseId}
+    </select>
+
+    <update id="updateClase">
+        update major
+        <set>
+            <if test="majorId != null and majorId != ''">major_id = #{majorId} </if>
+            <if test="claseName != null and claseName != ''">clase_name = #{claseName} </if>
+            <if test="teacherId != null and teacherId != ''">teacher_id = #{teacherId} </if>
+            <if test="instructor != null and instructor != ''">instructor = #{instructor} </if>
+            <if test="updateTime != null">update_time = #{updateTime} </if>
+            <if test="creator != null">creator = #{creator} </if>
+        </set>
+        where major_id = #{majorId}
+    </update>
 </mapper>

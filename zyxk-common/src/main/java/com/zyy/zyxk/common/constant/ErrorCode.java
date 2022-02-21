@@ -56,6 +56,8 @@ public enum ErrorCode {
     Major_Id_Invalid(10049,"无效的专业id"),
     No_Major_Name(10050,"专业名称不能为空"),
     SCHOOOL_NAME_NOT_NULL(10051,"学校名已存在"),
+    Clase_Id_Invalid(10052,"无效的班级id"),
+    No_Clase_Name(10053,"班级名称不能为空"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),
