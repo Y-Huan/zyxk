@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.CourseMapper">
+    <select id="selectCourseList" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
+        select course_id as courseId,
+                   course_name as courseName,
+            remark,
+            type,
+            teach_type as teachType
+        from course
+        where is_del = true
+        <if test="courseName != null and courseName != ''">
+            and course_name like '%${courseName}%'
+        </if>
+        <if test="type != null and type != ''">
+            and type = #{type}
+        </if>
+        <if test="teachType != null and teachType != ''">
+            and teach_type = #{teachType}
+        </if>
+    </select>
+    <select id="selectCourseById" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
+        select course_id as courseId,
+               course_name as courseName,
+               remark,
+               type,
+               teach_type as teachType
+        from course
+        where course_id = #{courseId}
+    </select>
 </mapper>
