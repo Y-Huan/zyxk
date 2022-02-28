@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.CollegeMapper">
+
+    <select id="selectCollegeList" resultType="com.zyy.zyxk.api.vo.college.CollegeListVo">
+        select c.college_id as collegeId,
+               c.college_name as collegeName,
+               c.school_id as schoolId,
+               c.dean,
+                s.school_name as schoolName,
+               s.school_address as schoolAddress
+        from college c
+        left join school s on c.school_id = s.school_id
+        where c.is_del = true
+        <if test="collegeName != null and collegeName != ''">
+            and c.college_name like '%${collegeName}%'
+        </if>
+        <if test="dean != null and dean != ''">
+            and c.dean like '%${dean}%'
+        </if>
+    </select>
+    <select id="selectCollegeById" resultType="com.zyy.zyxk.api.vo.college.CollegeListVo">
+        select c.college_id as collegeId,
+               c.college_name as collegeName,
+               c.school_id as schoolId,
+               c.dean,
+               s.school_name as schoolName,
+               s.school_address as schoolAddress
+        from college c
+                 left join school s on c.school_id = s.school_id
+        where c.college_id  = #{collegeId}
+    </select>
+
+    <update id="updateCollege">
+        update college
+        <set>
+            <if test="schoolId != null and schoolId != ''">school_id = #{schoolId} </if>
+            <if test="collegeName != null and collegeName != ''">college_name = #{collegeName} </if>
+            <if test="dean != null and dean != ''">dean = #{dean} </if>
+            <if test="updateTime != null">update_time = #{updateTime} </if>
+            <if test="creator != null">creator = #{creator} </if>
+        </set>
+        where college_id = #{collegeId}
+    </update>
 </mapper>
