@@ -3,6 +3,7 @@ package com.zyy.zyxk.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zyy.zyxk.api.vo.course.CourseVo;
 import com.zyy.zyxk.api.vo.course.SelectCourseVo;
+import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
 import com.zyy.zyxk.dao.entity.Course;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +29,11 @@ public interface CourseMapper extends BaseMapper<Course> {
      * @return
      */
     CourseVo selectCourseById(@Param("courseId")String courseId);
+
+    /**
+     * 修改课程
+     * @param updateCourseVo
+     * @return
+     */
+    int updateCourseById(UpdateCourseVo updateCourseVo);
 }

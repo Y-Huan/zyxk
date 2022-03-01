@@ -1,16 +1,20 @@
 package com.zyy.zyxk.service.course.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.course.CourseVo;
 import com.zyy.zyxk.api.vo.course.InsertCourseVo;
 import com.zyy.zyxk.api.vo.course.SelectCourseVo;
 import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
+import com.zyy.zyxk.common.constant.ErrorCode;
+import com.zyy.zyxk.common.exception.BizException;
 import com.zyy.zyxk.dao.CourseMapper;
 import com.zyy.zyxk.dao.entity.Course;
 import com.zyy.zyxk.service.course.CourseService;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -31,7 +35,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Override
     public List<CourseVo> selectCourseList(SelectCourseVo selectCourseVo) {
-        return null;
+        return courseMapper.selectCourseList(selectCourseVo);
     }
 
     /**
@@ -42,7 +46,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Override
     public CourseVo selectCourseById(String courseId) {
-        return null;
+        return courseMapper.selectCourseById(courseId);
     }
 
     /**
@@ -53,7 +57,16 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Override
     public void addCourse(InsertCourseVo insertCourseVo, UserJwtVo currentUser) {
-
+        Course course = new Course();
+        course.setCourseId(insertCourseVo.getCourseId());
+        course.setCourseName(insertCourseVo.getCourseName());
+        course.setCreator(currentUser.getUserName());
+        course.setCreateTime(LocalDateTime.now());
+        course.setRemark(insertCourseVo.getRemark());
+        course.setTeachType(insertCourseVo.getTeachType());
+        course.setType(insertCourseVo.getType());
+        course.setIsDel(true);
+        courseMapper.insert(course);
     }
 
     /**
@@ -64,7 +77,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Override
     public void updateCourse(UpdateCourseVo updateCourseVo, UserJwtVo currentUser) {
-
+        updateCourseVo.setCreator(currentUser.getUserName());
+        updateCourseVo.setUpdateTime(LocalDateTime.now());
+        courseMapper.updateCourseById(updateCourseVo);
     }
 
     /**
@@ -74,6 +89,15 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Override
     public void delCourse(String courseId) {
-
+        QueryWrapper<Course> courseWrapper = new QueryWrapper<>();
+        courseWrapper.eq("course_id",courseId);
+        courseWrapper.eq("is_del",true);
+        Course course= courseMapper.selectOne(courseWrapper);
+        if(course == null){
+            throw new BizException(ErrorCode.Course_Id_Invalid);
+        }
+        course.setIsDel(false);
+        course.setUpdateTime(LocalDateTime.now());
+        courseMapper.updateById(course);
     }
 }

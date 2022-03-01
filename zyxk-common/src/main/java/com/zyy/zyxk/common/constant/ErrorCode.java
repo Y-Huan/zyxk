@@ -59,8 +59,9 @@ public enum ErrorCode {
     Clase_Id_Invalid(10052,"无效的班级id"),
     No_Clase_Name(10053,"班级名称不能为空"),
     College_Id_Invalid(10054,"无效的分院id"),
-    No_College_Name(10050,"分院名称不能为空"),
-
+    No_College_Name(10055,"分院名称不能为空"),
+    Course_Id_Invalid(10056,"无效的课程id"),
+    No_Course_Name(10057,"课程名称不能为空"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),

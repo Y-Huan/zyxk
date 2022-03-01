@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.CourseMapper">
+
     <select id="selectCourseList" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
         select course_id as courseId,
                    course_name as courseName,
@@ -28,4 +29,18 @@
         from course
         where course_id = #{courseId}
     </select>
+
+    <update id="updateCourseById">
+        update course
+        <set>
+            <if test="courseId != null and courseId != ''">course_id = #{courseId} </if>
+            <if test="courseName != null and courseName != ''">course_name = #{courseName} </if>
+            <if test="remark != null and remark != ''">remark = #{remark} </if>
+            <if test="type != null and type != ''">type = #{type} </if>
+            <if test="teachType != null and teachType != ''">teach_type = #{teachType} </if>
+            <if test="updateTime != null">update_time = #{updateTime} </if>
+            <if test="creator != null">creator = #{creator} </if>
+        </set>
+        where course_id = #{courseId}
+    </update>
 </mapper>
