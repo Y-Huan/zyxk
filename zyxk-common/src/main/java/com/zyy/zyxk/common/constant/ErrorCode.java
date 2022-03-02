@@ -62,6 +62,9 @@ public enum ErrorCode {
     No_College_Name(10055,"分院名称不能为空"),
     Course_Id_Invalid(10056,"无效的课程id"),
     No_Course_Name(10057,"课程名称不能为空"),
+    TOKEN_ISNULL(10058,"该老师可带毕业生名额已满"),
+    NO_OLD_PASSWORD(10059,"旧密码不能为空"),
+    OLD_PASSWORD_ERROR(10060,"旧密码错误"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),

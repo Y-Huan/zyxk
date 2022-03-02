@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zyy.zyxk.api.vo.LoginVo;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
-import com.zyy.zyxk.common.exception.AuthenticationException;
 import com.zyy.zyxk.common.exception.BizException;
 import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.common.util.EncryptUtil;
@@ -22,8 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Yang.H
@@ -46,17 +46,17 @@ public class LoginServiceImpl implements LoginService {
     public LoginVo teacherLogin(String userName, String password) {
         QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
         teacherQueryWrapper.eq("phone",userName);
-        teacherQueryWrapper.eq("is_valid",true);
+        teacherQueryWrapper.eq("is_del",true);
         Teacher teacher =  teacherMapper.selectOne(teacherQueryWrapper);
         if (teacher == null) {
-            throw new AuthenticationException("登录失败：该手机号不存在");
+            throw new BizException(ErrorCode.USER_NOT_EXISTS);
         }
 
         if (!teacher.getPassword().equals(EncryptUtil.encryptPassword(password,teacher.getSalt()))) {
-            throw new AuthenticationException("登录失败：密码错误");
+            throw new BizException(ErrorCode.ERROR_ACCOUNT);
         }
         //查询返回所需的信息
-        LoginVo loginVo = teacherMapper.getLogin(userName);
+        LoginVo loginVo =  teacherMapper.getLogin(userName);
         UserJwtVo userJwtVo = new UserJwtVo();
         BeanUtil.copyProperties(loginVo, userJwtVo);
         //生成token
@@ -74,11 +74,10 @@ public class LoginServiceImpl implements LoginService {
         teacherQueryWrapper.eq("is_valid",true);
         Student student =  studentMapper.selectOne(teacherQueryWrapper);
         if (student == null) {
-            throw new AuthenticationException("登录失败：该学号不存在");
+            throw new BizException(ErrorCode.USER_NOT_EXISTS);
         }
-
         if (!student.getPassword().equals(EncryptUtil.encryptPassword(password,student.getSalt()))) {
-            throw new AuthenticationException("登录失败：密码错误");
+            throw new BizException(ErrorCode.ERROR_ACCOUNT);
         }
         //查询返回所需的信息
         LoginVo loginVo = studentMapper.getLogin(userName);
@@ -88,18 +87,19 @@ public class LoginServiceImpl implements LoginService {
         String token = JwtUtil.generateToken(userJwtVo);
         //将token放入redis
         redisService.setToken(userJwtVo.getId(), token);
+        List<String> authority = new ArrayList<>();
+        authority.add("student");
+        loginVo.setAuthorityPermission(authority);
         loginVo.setToken(token);
         return loginVo;
     }
 
-    //生成盐的方法
-    public String salt(){
-        //生成随机数,类型转换
-        double random = Math.random();
-        NumberFormat instance = NumberFormat.getInstance();
-        instance.setGroupingUsed(false);
-        String format = instance.format(random);
-        return EncryptUtil.md5(format);
+
+
+    @Override
+    public void logout(UserJwtVo currentUser) {
+        //将token放入redis
+        redisService.deleteToken(currentUser.getId());
     }
 
     //导入教师信息
@@ -108,12 +108,12 @@ public class LoginServiceImpl implements LoginService {
     public boolean teacherInfo(Workbook excelInfo, UserJwtVo currentUser) {
         Sheet sheet = excelInfo.getSheetAt(0); //默认取第一个sheet
         int rowsNum = sheet.getLastRowNum();//获取最后一行的行标
-        for(int j=2; j<rowsNum+1;j++) { //第一行为表头，所以从第二行开始
+        for(int j=1; j<rowsNum+1;j++) { //第一行为表头，所以从第二行开始
             Row row = sheet.getRow(j);
             if (row != null) {
                 //判断手机号是否重复
                 QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
-                teacherQueryWrapper.eq("phone",row.getCell(2).toString());
+                teacherQueryWrapper.eq("phone",row.getCell(1).toString());
                 teacherQueryWrapper.eq("is_del",true);
                 Teacher teacher1 = teacherMapper.selectOne(teacherQueryWrapper);
                 if(teacher1!=null){
@@ -122,10 +122,10 @@ public class LoginServiceImpl implements LoginService {
 
                 //取出所需要的信息
                 Teacher teacher = new Teacher();
-                teacher.setTeacherName(row.getCell(1).toString());
-                teacher.setPhone(row.getCell(2).toString());
-                teacher.setSex(sex(row.getCell(3).toString()));
-                teacher.setSalt(salt());
+                teacher.setTeacherName(row.getCell(0).toString());
+                teacher.setPhone((row.getCell(1).toString()));
+                teacher.setSex(sex(row.getCell(2).toString()));
+                teacher.setSalt(EncryptUtil.salt());
                 teacher.setPassword(EncryptUtil.encryptPassword(teacher.getPhone(), teacher.getSalt()));
                 teacher.setSchoolId(currentUser.getSchoolId());
                 teacher.setCreator(currentUser.getId());
@@ -152,7 +152,7 @@ public class LoginServiceImpl implements LoginService {
     public boolean studentInfo(Workbook excelInfo, UserJwtVo currentUser,String cleasId) {
         Sheet sheet = excelInfo.getSheetAt(0); //默认取第一个sheet
         int rowsNum = sheet.getLastRowNum();//获取最后一行的行标
-        for(int j=2; j<rowsNum+1;j++) { //第一行为表头，所以从第二行开始
+        for(int j=1; j<rowsNum+1;j++) { //第一行为表头，所以从第二行开始
             Row row = sheet.getRow(j);
             if (row != null) {
                 QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
@@ -164,13 +164,13 @@ public class LoginServiceImpl implements LoginService {
                 }
                 //取出所需要的信息
                Student student = new Student();
-               student.setStudentNumber(row.getCell(1).toString());
-               student.setStudentName(row.getCell(2).toString());
+               student.setStudentNumber(row.getCell(0).toString());
+               student.setStudentName(row.getCell(1).toString());
                student.setClaseId(cleasId);
                student.setSchoolId(currentUser.getSchoolId());
-               student.setPhone(row.getCell(3).toString());
-               student.setSex(sex(row.getCell(4).toString()));
-               student.setSalt(salt());
+               student.setPhone(row.getCell(2).toString());
+               student.setSex(sex(row.getCell(3).toString()));
+               student.setSalt(EncryptUtil.salt());
                student.setPassword(EncryptUtil.encryptPassword(student.getPhone(),student.getSalt()));
                student.setCreator(currentUser.getId());
                student.setCreateTime(LocalDateTime.now());

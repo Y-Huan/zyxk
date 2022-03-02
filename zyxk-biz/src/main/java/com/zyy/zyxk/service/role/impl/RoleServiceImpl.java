@@ -55,6 +55,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         //设置信息新增
         Role role = new Role();
         role.setRoleName(roleVo.getRoleName());
+        role.setRoleComment(roleVo.getRoleComment());
         role.setCreator(currentUser.getId());
         role.setCreateTime(LocalDateTime.now());
         role.setIsDel(true);

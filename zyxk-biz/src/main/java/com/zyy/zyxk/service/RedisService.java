@@ -9,6 +9,8 @@ public interface RedisService {
 
     boolean isValidToken(String userId);
 
+    //测试令牌桶
+    void test(String id, Integer x);
 
-
+    void testget( String id);
 }

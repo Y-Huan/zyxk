@@ -5,8 +5,12 @@
         select
             r.role_id,
             r.role_name,
+            r.role_comment
         from role r
         where r.is_del = 1
-            and r.role_name = #{selectStringKey}
+          <if test="selectStringKey != null and selectStringKey != ''">
+              and r.role_name = #{selectStringKey}
+          </if>
+
     </select>
 </mapper>

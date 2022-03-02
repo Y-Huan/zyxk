@@ -1,5 +1,6 @@
 package com.zyy.zyxk.api.vo.course;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,9 +26,14 @@ public class InsertCourseVo {
     private Integer teachType;
     @ApiModelProperty(value = "创建者")
     private String creator;
+    @ApiModelProperty(value = "开始抢课时间")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
+    private LocalDateTime starterTime;
     @ApiModelProperty(value = "创建时间")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private LocalDateTime createTime;
     @ApiModelProperty(value = "修改时间")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private LocalDateTime updateTime;
     @ApiModelProperty(value = "禁用状态")
     private Boolean isDel;

@@ -2,6 +2,8 @@ package com.zyy.zyxk.common.util;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @Description 通用工具
@@ -27,5 +29,16 @@ public class EncryptUtil {
      */
     public static String md5(String source){
         return String.valueOf(new SimpleHash("MD5", source));
+    }
+
+
+    //生成盐的方法
+    public static String salt(){
+        //生成随机数,类型转换
+        double random = Math.random();
+        NumberFormat instance = NumberFormat.getInstance();
+        instance.setGroupingUsed(false);
+        String format = instance.format(random);
+        return EncryptUtil.md5(format);
     }
 }

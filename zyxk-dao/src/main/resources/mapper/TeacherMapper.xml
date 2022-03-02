@@ -3,8 +3,8 @@
 <mapper namespace="com.zyy.zyxk.dao.TeacherMapper">
     <select id="getLogin" resultType="com.zyy.zyxk.api.vo.LoginVo">
         select
-            t.teacher_id,
-            t.teacher_name,
+            t.teacher_id as id,
+            t.teacher_name as userName,
             t.phone,
             t.school_id,
             sa.authority_permission
@@ -13,6 +13,23 @@
         left join role r on r.role_id = trr.role_id
         left join role_authority_rel rar on rar.role_id = trr.role_id
         left join sys_authority sa on sa.authority_id = rar.authority_id
-        where t.phone = #{userName} and is_del = 1
+        where t.phone = #{userName} and t.is_del = 1
+    </select>
+    <select id="getList" resultType="com.zyy.zyxk.api.vo.TeacherVo">
+        select
+            t.*,
+            r.role_name,
+            s.school_name
+        from teacher t
+        left join school s on s.school_id = t.school_id
+        left join teacher_role_rel ttr on ttr.teacher_id = t.teacher_id
+        left join role r on r.role_id = ttr.role_id
+        where t.is_del = 1
+        <if test="selectStringKey != null and selectStringKey != '' ">
+            t.phone like concat ('%',#{selectStringKey},'%')
+        </if>
+        <if test="schoolId != null and schoolId != '' ">
+            t.school_id = #{schoolId}
+        </if>
     </select>
 </mapper>

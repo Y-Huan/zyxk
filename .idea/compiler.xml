@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="zyxk-dao" />
-        <module name="zyxk-api" />
         <module name="zyxk-biz" />
         <module name="zyxk-web" />
         <module name="zyxk-common" />
+        <module name="zyxk-dao" />
+        <module name="zyxk-api" />
       </profile>
     </annotationProcessing>
   </component>

@@ -18,4 +18,6 @@ public interface LoginService {
     boolean teacherInfo(Workbook excelInfo, UserJwtVo currentUser);
     //导入学生信息
     boolean studentInfo(Workbook excelInfo, UserJwtVo currentUser,String cleasId);
+    //退出登录
+    void logout(UserJwtVo currentUser);
 }

@@ -1,7 +1,9 @@
 package com.zyy.zyxk.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.zyy.zyxk.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -39,4 +41,29 @@ public class RedisServiceImpl implements RedisService {
     }
 
 
+    @Override
+    public void test(String id, Integer x) {
+
+        ListOperations<String ,String> test =(ListOperations<String ,String> )redisTemplate.opsForList();
+        for (int i = 0; i < x; i++) {
+            test.leftPush(JSON.toJSONString(id),JSON.toJSONString(String.valueOf(i)));
+        }
+
+    }
+
+    @Override
+    public void testget(String id) {
+        ListOperations<String ,String> test =(ListOperations<String ,String> )redisTemplate.opsForList();
+
+
+
+        if(test.size(JSON.toJSONString(id))==0){
+            System.out.println("当前令牌已为空");
+        }else {
+            System.out.println(test.leftPop(JSON.toJSONString(id) ).toString());
+        }
+
+
+
+    }
 }

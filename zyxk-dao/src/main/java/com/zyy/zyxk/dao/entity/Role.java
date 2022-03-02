@@ -29,6 +29,8 @@ public class Role implements Serializable{
     @DiyId(TableEnum.ROLE)
     private String roleId;
 
+    private String roleComment;
+
     private String roleName;
 
     private String creator;

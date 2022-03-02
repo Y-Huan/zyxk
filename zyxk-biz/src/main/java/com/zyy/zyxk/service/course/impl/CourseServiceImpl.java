@@ -9,9 +9,11 @@ import com.zyy.zyxk.api.vo.course.SelectCourseVo;
 import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.BizException;
+import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.dao.CourseMapper;
 import com.zyy.zyxk.dao.entity.Course;
 import com.zyy.zyxk.service.course.CourseService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -21,6 +23,7 @@ import java.util.List;
  * @author fl
  * @date 2022-02-28
  **/
+@Service
 public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> implements CourseService {
 
     @Resource
@@ -58,15 +61,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     @Override
     public void addCourse(InsertCourseVo insertCourseVo, UserJwtVo currentUser) {
         Course course = new Course();
-        course.setCourseId(insertCourseVo.getCourseId());
-        course.setCourseName(insertCourseVo.getCourseName());
-        course.setCreator(currentUser.getUserName());
-        course.setCreateTime(LocalDateTime.now());
-        course.setRemark(insertCourseVo.getRemark());
-        course.setTeachType(insertCourseVo.getTeachType());
-        course.setType(insertCourseVo.getType());
-        course.setIsDel(true);
+        BeanUtil.copyProperties(insertCourseVo,course);
         courseMapper.insert(course);
+
     }
 
     /**

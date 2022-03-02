@@ -16,6 +16,8 @@ public class RoleVo {
 
     private String roleName;
 
+    private String roleComment;
+
     private String creator;
 
     private LocalDateTime createTime;
