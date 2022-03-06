@@ -7,7 +7,9 @@ import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
+import com.zyy.zyxk.dao.entity.SysAuthority;
 import com.zyy.zyxk.service.AuthorityService;
+import com.zyy.zyxk.service.util.JwtUtil;
 import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,8 +18,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Yang.H
@@ -34,36 +35,24 @@ public class AuthorityController {
     private AuthorityService authorityService;
 
     @PostMapping("addAuthority")
-
     @ApiOperation(value = "新增权限",notes = "新增权限")
-    public Response addAuthority(@RequestBody AuthorityVo authorityVo){
-//        String token = request.getHeader("token");, HttpServletRequest request
-//        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-
-        UserJwtVo currentUser = new UserJwtVo();
-        currentUser.setId("0000000000000001");
+    public Response addAuthority(@RequestBody AuthorityVo authorityVo, HttpServletRequest request){
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
         if(authorityVo.getAuthorityType() == null){
             return Response.fail(ErrorCode.AUTHORITY_TYPE_NULL);
         }
-        try{
-            authorityService.addAuthority(authorityVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        authorityService.addAuthority(authorityVo,currentUser);
         return Response.success("更新成功");
     }
 
     @PostMapping("delAuthority")
     @ApiOperation(value = "删除权限",notes ="删除权限" )
-    public Response delAuthority(@RequestBody String authorityId){
-        if(StringUtils.isEmpty(authorityId)){
+    public Response delAuthority(@RequestBody  AuthorityVo authorityVo){
+        if(StringUtils.isEmpty(authorityVo.getAuthorityId())){
             return Response.fail(ErrorCode.BIND_ERROR);
         }
-        try{
-            authorityService.delAuthority(authorityId);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        authorityService.delAuthority(authorityVo.getAuthorityId());
         return Response.success("更新成功");
     }
 
@@ -86,15 +75,22 @@ public class AuthorityController {
 
     @GetMapping("list")
     @ApiOperation(value = "权限列表",notes ="权限列表" )
-    public Response list(BaseSelectVo baseSelectVo){
-        List<AuthorityVo> authorityVos = new ArrayList<>();
-        try{
-            IPage page = new Page<>();
-            PageUtil.setPage(baseSelectVo.getPageNo(), baseSelectVo.getPageSize(), page);
-            authorityVos  = authorityService.getList(page,baseSelectVo);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+    public Response<IPage<AuthorityVo>> list(BaseSelectVo baseSelectVo){
+
+        IPage<AuthorityVo> page = new Page<>();
+        PageUtil.setPage(baseSelectVo.getPageNo(), baseSelectVo.getPageSize(), page);
+        IPage<AuthorityVo> authorityVos  = authorityService.getList(page,baseSelectVo);
+
         return Response.success("获取成功",authorityVos);
+    }
+
+    @GetMapping("detail")
+    @ApiOperation("权限详情")
+    public Response detail(String authorityId){
+        if(StringUtils.isEmpty(authorityId)){
+            return Response.fail(ErrorCode.AUTHORITY_NULL);
+        }
+        SysAuthority authorityVo = authorityService.deatil(authorityId);
+        return Response.success("获取成功",authorityVo);
     }
 }

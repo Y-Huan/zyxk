@@ -48,14 +48,9 @@ public class CommonServiceImpl extends ServiceImpl<SequenceMapper, Sequence> imp
         Sequence sequence = new Sequence();
         sequence.setTableName(tableName);
         sequenceMapper.updateSequence(tableName);
-        String nineCode = StringUtils.leftPad(sequenceMapper.getNewAddId(sequence.getTableName()).toString(), 8, "0");
+        String nineCode = StringUtils.leftPad(sequenceMapper.getNewAddId(sequence.getTableName()).toString(), 9, "0");
+        return id.append("ZYXK").append(a).append(nineCode).toString();
 
-
-        if(schoolId == null){
-            return id.append("00000").append(a).append(nineCode).toString();
-        }else {
-            return id.append(schoolId.substring(11,16)).append(a).append(nineCode).toString();
-        }
     }
 
 

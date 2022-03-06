@@ -1,5 +1,6 @@
 package com.zyy.zyxk.api.vo.clase;
 
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,13 +11,9 @@ import lombok.Data;
  **/
 @Data
 @ApiModel(value = "查询班级")
-public class SelectClaseVo {
+public class SelectClaseVo extends BaseSelectVo {
     @ApiModelProperty(value = "班级名称")
     private String claseName;
-    @ApiModelProperty(value = "老师(辅导员)名称")
-    private String teacherName;
-    @ApiModelProperty(value = "手机号")
-    private String phone;
     @ApiModelProperty(value = "专业名称")
     private String majorName;
 }

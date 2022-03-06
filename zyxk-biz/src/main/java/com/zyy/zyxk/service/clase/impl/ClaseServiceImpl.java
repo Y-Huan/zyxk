@@ -1,6 +1,7 @@
 package com.zyy.zyxk.service.clase.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.clase.ClaseListVo;
@@ -9,12 +10,16 @@ import com.zyy.zyxk.api.vo.clase.SelectClaseVo;
 import com.zyy.zyxk.api.vo.clase.UpdateClaseVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.BizException;
+import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.dao.ClaseMapper;
+import com.zyy.zyxk.dao.StudentMapper;
 import com.zyy.zyxk.dao.entity.Clase;
+import com.zyy.zyxk.dao.entity.Student;
 import com.zyy.zyxk.service.clase.ClaseService;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,8 +31,12 @@ import java.util.List;
 @Service
 public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements ClaseService {
 
-    @Resource
+    @Autowired
     private ClaseMapper claseMapper;
+
+
+    @Autowired
+    private StudentMapper studentMapper;
     /**
      * 班级列表
      *
@@ -35,8 +44,8 @@ public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements
      * @return
      */
     @Override
-    public List<ClaseListVo> selectClaseList(SelectClaseVo selectClaseVo) {
-        return claseMapper.selectClaseList(selectClaseVo);
+    public IPage<ClaseListVo> selectClaseList(IPage<ClaseListVo> page,SelectClaseVo selectClaseVo,UserJwtVo currentUser) {
+        return claseMapper.selectClaseList(page,selectClaseVo.getClaseName(),selectClaseVo.getMajorName(),currentUser.getSchoolId());
     }
 
     /**
@@ -46,7 +55,7 @@ public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements
      * @return
      */
     @Override
-    public Clase selectClaseById(String claseId) {
+    public ClaseListVo selectClaseById(String claseId) {
         return claseMapper.selectClaseById(claseId);
     }
 
@@ -58,9 +67,16 @@ public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements
      */
     @Override
     public int updateClase(UpdateClaseVo updateClaseVo, UserJwtVo currentUser) {
+        if(checkName(updateClaseVo.getClaseName(),updateClaseVo.getClaseId())){
+            throw new BizException(ErrorCode.CLASE_NAME_NOT_NULL_ERROR);
+        }
+        if(checkTeacher(updateClaseVo.getTeacherId(),updateClaseVo.getClaseId())){
+            throw new BizException(ErrorCode.TEACHER_POSITION_REPEAT_ERROR);
+        }
+        Clase clase = new Clase();
+        BeanUtil.copyProperties(updateClaseVo,clase);
         updateClaseVo.setUpdateTime(LocalDateTime.now());
-        updateClaseVo.setCreator(currentUser.getUserName());
-        return claseMapper.updateClase(updateClaseVo);
+        return claseMapper.updateById(clase);
     }
 
     /**
@@ -70,14 +86,16 @@ public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements
      */
     @Override
     public void addClase(InsertClaseVo insertClaseVo, UserJwtVo currentUser) {
+        if(checkName(insertClaseVo.getClaseName(),insertClaseVo.getClaseId())){
+            throw new BizException(ErrorCode.CLASE_NAME_NOT_NULL_ERROR);
+        }
+        if(checkTeacher(insertClaseVo.getTeacherId(),insertClaseVo.getClaseId())){
+            throw new BizException(ErrorCode.TEACHER_POSITION_REPEAT_ERROR);
+        }
         Clase clase = new Clase();
-        clase.setClaseName(insertClaseVo.getClaseName());
-        clase.setInstructor(insertClaseVo.getInstructor());
-        clase.setIsDel(true);
-        clase.setMajorId(insertClaseVo.getMajorId());
-        clase.setTeacherId(insertClaseVo.getTeacherId());
+        BeanUtil.copyProperties(insertClaseVo,clase);
         clase.setCreateTime(LocalDateTime.now());
-        clase.setCreator(currentUser.getUserName());
+        clase.setCreator(currentUser.getId());
         claseMapper.insert(clase);
     }
 
@@ -95,8 +113,46 @@ public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements
         if(clase == null){
             throw new BizException(ErrorCode.Clase_Id_Invalid);
         }
+        QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
+        studentQueryWrapper.eq("clase_id",claseId);
+        studentQueryWrapper.eq("is_del",true);
+        List<Student> students = studentMapper.selectList(studentQueryWrapper);
+        if(students.size()>0){
+            throw new BizException(ErrorCode.CLASE_STRDENT_NOT_NULL_ERROR);
+        }
         clase.setIsDel(false);
         clase.setUpdateTime(LocalDateTime.now());
         claseMapper.updateById(clase);
+    }
+
+
+    //判断重名
+    public boolean checkName(String claseName,String claseId){
+        QueryWrapper<Clase> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("clase_name",claseName);
+        if (StringUtils.isNotEmpty(claseId)){
+            queryWrapper.ne("clase_id",claseId);
+        }
+        queryWrapper.eq("is_del",true);
+        Clase clase = claseMapper.selectOne(queryWrapper);
+        if (clase == null ){
+            return false;
+        }
+        return true;
+    }
+
+    //判断教师是否有同级任职
+    public boolean checkTeacher(String teacherId,String claseId){
+        QueryWrapper<Clase> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("teacher_id",teacherId);
+        if (StringUtils.isNotEmpty(claseId)){
+            queryWrapper.ne("clase_id",claseId);
+        }
+        queryWrapper.eq("is_del",true);
+        Clase clase = claseMapper.selectOne(queryWrapper);
+        if (clase == null ){
+            return false;
+        }
+        return true;
     }
 }

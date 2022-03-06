@@ -6,8 +6,6 @@ import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.dao.entity.Role;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 /**
  * @author Yang.H
  * @version 1.0
@@ -15,5 +13,5 @@ import java.util.List;
  */
 public interface RoleMapper extends BaseMapper<Role> {
     //角色列表
-    List<RoleVo> getList(IPage page, @Param("selectStringKey") String selectStringKey);
+    IPage<RoleVo> getList(IPage page, @Param("selectStringKey") String selectStringKey);
 }

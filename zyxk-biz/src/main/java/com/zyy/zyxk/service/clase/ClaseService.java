@@ -1,5 +1,6 @@
 package com.zyy.zyxk.service.clase;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.clase.ClaseListVo;
@@ -8,8 +9,6 @@ import com.zyy.zyxk.api.vo.clase.SelectClaseVo;
 import com.zyy.zyxk.api.vo.clase.UpdateClaseVo;
 import com.zyy.zyxk.dao.entity.Clase;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @author fl
@@ -22,14 +21,14 @@ public interface ClaseService extends IService<Clase> {
      * @param selectClaseVo
      * @return
      */
-    List<ClaseListVo> selectClaseList(SelectClaseVo selectClaseVo);
+    IPage<ClaseListVo> selectClaseList( IPage<ClaseListVo> page,SelectClaseVo selectClaseVo,UserJwtVo currentUser);
 
     /**
      * 班级详情
      * @param claseId
      * @return
      */
-    Clase selectClaseById(@Param(value = "claseId") String claseId);
+    ClaseListVo selectClaseById(@Param(value = "claseId") String claseId);
 
     /**
      * 修改班级

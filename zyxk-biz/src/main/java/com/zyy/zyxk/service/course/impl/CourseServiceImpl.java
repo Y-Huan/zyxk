@@ -63,7 +63,6 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         Course course = new Course();
         BeanUtil.copyProperties(insertCourseVo,course);
         courseMapper.insert(course);
-
     }
 
     /**

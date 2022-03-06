@@ -5,11 +5,14 @@
         select
             r.role_id,
             r.role_name,
-            r.role_comment
+            r.role_comment,
+            r.create_time,
+            t.teacher_name as creator
         from role r
+        left join teacher t on t.teacher_id = r.creator
         where r.is_del = 1
           <if test="selectStringKey != null and selectStringKey != ''">
-              and r.role_name = #{selectStringKey}
+              and r.role_name like concat ('%',#{selectStringKey},'%')
           </if>
 
     </select>

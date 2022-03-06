@@ -6,7 +6,13 @@
             sa.*
         from sys_authority sa
         where sa.is_del = true
-            and sa.authority_name = #{selectKey}
+          <if test="selectKey !=null and selectKey != ''">
+                and sa.authority_name like concat ('%',#{selectKey},'%')
+          </if>
+        <if test="selectLongKey !=null and selectLongKey != ''">
+            and (sa.authority_type = 1 or sa.authority_type = 2)
+        </if>
+
     </select>
     <select id="getUserAuthorityAll" resultType="java.lang.String">
         select

@@ -1,5 +1,6 @@
 package com.zyy.zyxk.service.major;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.major.InsertMajorVo;
@@ -8,8 +9,6 @@ import com.zyy.zyxk.api.vo.major.SelectMajorVo;
 import com.zyy.zyxk.api.vo.major.UpdateMajorVo;
 import com.zyy.zyxk.dao.entity.Major;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @author fl
@@ -24,7 +23,7 @@ public interface MajorService extends IService<Major> {
      * @return
      */
 
-    List<MajorListVo> selectMajorList(SelectMajorVo selectMajorVo);
+    IPage<MajorListVo> selectMajorList(IPage<MajorListVo> page, SelectMajorVo selectMajorVo);
     /**
      * 专业详情
      * @param majorId

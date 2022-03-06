@@ -8,8 +8,6 @@ import com.zyy.zyxk.api.vo.role.RoleVo;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.dao.entity.Role;
 
-import java.util.List;
-
 /**
  * @author Yang.H
  * @version 1.0
@@ -24,7 +22,7 @@ public interface RoleService extends IService<Role> {
     //编辑角色
     void updateRole(RoleAuthorityListVo roleAuthorityVo, UserJwtVo currentUser);
     //角色列表
-    List<RoleVo> getList(IPage page,String selectStringKey);
+    IPage<RoleVo> getList(IPage page,String selectStringKey);
     //获取角色权限列表
     Response getAuthorityList(String roleId);
 }

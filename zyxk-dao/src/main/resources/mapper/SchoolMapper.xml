@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.SchoolMapper">
+    <select id="getList" resultType="com.zyy.zyxk.api.vo.school.SchoolVo">
+        select
+            s.*
+        from school s
+        where s.is_del = 1
+        <if test="selectStringKey !=null and selectStringKey !='' ">
+           and  s.school_name like concat('%',#{selectStringKey},'%')
+        </if>
+    </select>
+    <select id="getDetail" resultType="com.zyy.zyxk.api.vo.school.SchoolVo">
+        select
+            s.school_id,
+            s.school_name,
+            s.school_address
+        from school s
+        where s.school_id = #{schoolId} and s.is_del = 1
+    </select>
 </mapper>

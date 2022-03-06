@@ -19,8 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Yang.H
@@ -56,12 +54,12 @@ public class RoleController {
 
     @PostMapping("delRole")
     @ApiOperation(value = "删除角色",notes = "删除角色")
-    public Response delRole(@RequestBody String roleId){
-        if(StringUtils.isEmpty(roleId)){
+    public Response delRole(@RequestBody RoleVo roleVo){
+        if(StringUtils.isEmpty(roleVo.getRoleId())){
             return Response.fail(ErrorCode.Role_Id_Invalid);
         }
         try {
-            roleService.delRole(roleId);
+            roleService.delRole(roleVo.getRoleId());
         }catch (Exception e){
             log.info(e.getMessage());
         }
@@ -77,28 +75,16 @@ public class RoleController {
         if (roleAuthorityVo.getAuthoritys().size() <= 0 ){
             return Response.fail(ErrorCode.No_Authorities);
         }
-        if(StringUtils.isEmpty(roleAuthorityVo.getRoleName())){
-            return Response.fail(ErrorCode.No_Role_Name);
-        }
-        try {
             roleService.updateRole(roleAuthorityVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
         return Response.success("更新成功");
     }
 
     @GetMapping("list")
     @ApiOperation(value = "角色列表",notes = "角色列表")
-    public Response list(BaseSelectVo baseSelectVo){
-        List<RoleVo> roleVos = new ArrayList<>();
-        try {
-            IPage page = new Page<>();
-            PageUtil.setPage(baseSelectVo.getPageNo(), baseSelectVo.getPageSize(), page);
-            roleVos = roleService.getList(page,baseSelectVo.getSelectStringKey());
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+    public Response<IPage<RoleVo>> list(BaseSelectVo baseSelectVo){
+        IPage<RoleVo> page = new Page<>();
+        PageUtil.setPage(baseSelectVo.getPageNo(), baseSelectVo.getPageSize(), page);
+        IPage<RoleVo> roleVos  = roleService.getList(page,baseSelectVo.getSelectStringKey());
         return Response.success("获取成功",roleVos);
     }
 

@@ -11,20 +11,17 @@
                 t.phone,
                 c.college_name as collegeName
         from major m
-        left join college c on m.college =c.college_id
+        left join college c on m.college_id =c.college_id
         left join teacher t on m.person_in_charge_id = t.teacher_id
         where m.is_del = true
         <if test="majorName != null and majorName != ''">
-            and m.major_name like '%${majorName}%'
+            and m.major_name like concat('%',#{majorName},'%')
         </if>
         <if test="personInChargeName != null and personInChargeName != ''">
-            and t.teacher_name like '%${personInChargeName}%'
+            and t.teacher_name like concat('%',#{personInChargeName},'%')
         </if>
         <if test="phone != null and phone != ''">
-            and t.phone like '%${phone}%'
-        </if>
-        <if test="collegeName != null and collegeName != ''">
-            and m.college_name like '%${collegeName}%'
+            and t.phone like concat('%',#{phone},'%')
         </if>
     </select>
     <select id="selectedMajorById" resultType="com.zyy.zyxk.api.vo.major.MajorListVo">
@@ -36,7 +33,7 @@
                 t.phone,
                 c.college_name as collegeName
         from major m
-        left join college c on m.college =c.college_id
+        left join college c on m.college_id =c.college_id
         left join teacher t on m.person_in_charge_id = t.teacher_id
         where m.major_id = #{majorId}
     </select>

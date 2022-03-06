@@ -1,5 +1,7 @@
 package com.zyy.zyxk.web.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.clase.ClaseListVo;
 import com.zyy.zyxk.api.vo.clase.InsertClaseVo;
@@ -7,9 +9,9 @@ import com.zyy.zyxk.api.vo.clase.SelectClaseVo;
 import com.zyy.zyxk.api.vo.clase.UpdateClaseVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
-import com.zyy.zyxk.dao.entity.Clase;
 import com.zyy.zyxk.service.clase.ClaseService;
 import com.zyy.zyxk.service.util.JwtUtil;
+import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author fl
@@ -35,35 +35,28 @@ public class ClaseController {
     private ClaseService claseService;
 
     @ApiOperation(value = "班级列表" , notes = "班级列表")
-    @PostMapping("/list")
-    public Response selectClaseList(@RequestBody SelectClaseVo selectClaseVo){
-        List<ClaseListVo> claseListVoList = new ArrayList<>();
-        try {
-            claseListVoList = claseService.selectClaseList(selectClaseVo);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+    @PostMapping("list")
+    public Response selectClaseList(@RequestBody SelectClaseVo selectClaseVo,HttpServletRequest request){
+        UserJwtVo currentUser = JwtUtil.getCurrentUser( request.getHeader("token"));
+        IPage<ClaseListVo> page = new Page<>();
+        PageUtil.setPage(selectClaseVo.getPageNo(), selectClaseVo.getPageSize(), page);
+        IPage<ClaseListVo> claseListVoList  = claseService.selectClaseList(page,selectClaseVo,currentUser);
         return Response.success("获取成功",claseListVoList);
     }
 
-    @GetMapping("/{claseId}")
+    @GetMapping("detail")
     @ApiOperation(value = "班级详情" , notes = "班级详情")
-    public Response selectMajorById(@PathVariable String claseId){
-        Clase clase = claseService.selectClaseById(claseId);
+    public Response selectMajorById( String claseId){
+        ClaseListVo clase = claseService.selectClaseById(claseId);
         return Response.success("查询成功",clase);
     }
-    @DeleteMapping("/{claseId}")
+    @DeleteMapping("del")
     @ApiOperation(value = "删除班级" , notes = "删除班级")
-    public Response deleteClaseById(@PathVariable String claseId){
-        if(StringUtils.isEmpty(claseId)){
+    public Response deleteClaseById( InsertClaseVo insertClaseVo){
+        if(StringUtils.isEmpty(insertClaseVo.getClaseId())){
             return Response.fail(ErrorCode.Clase_Id_Invalid);
         }
-        try {
-            claseService.deleteClase(claseId);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
-
+        claseService.deleteClase(insertClaseVo.getClaseId());
         return Response.success("更新成功");
 
     }
@@ -76,25 +69,16 @@ public class ClaseController {
         if(StringUtils.isEmpty(insertClaseVo.getClaseName())){
             return Response.fail(ErrorCode.No_Clase_Name);
         }
-
-        try {
-            claseService.addClase(insertClaseVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        claseService.addClase(insertClaseVo,currentUser);
         return Response.success("更新成功");
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     @ApiOperation(value = "修改班级",notes = "修改班级")
     public Response updateClase(@RequestBody UpdateClaseVo updateClaseVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-        try {
-            claseService.updateClase(updateClaseVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        claseService.updateClase(updateClaseVo,currentUser);
         return Response.success("更新成功");
     }
 }

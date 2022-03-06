@@ -1,5 +1,6 @@
 package com.zyy.zyxk.api.vo.major;
 
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,12 +12,8 @@ import lombok.Data;
  **/
 @Data
 @ApiModel(value = "查询专业")
-public class SelectMajorVo {
-    @ApiModelProperty("查询页")
-    Long pageNo;
+public class SelectMajorVo extends BaseSelectVo {
 
-    @ApiModelProperty("查询数量")
-    Long pageSize;
     @ApiModelProperty(value = "专业名字", name = "majorName", example = "移动应用开发")
     private String majorName;
 

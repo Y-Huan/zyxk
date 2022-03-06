@@ -23,7 +23,8 @@ public enum TableEnum {
     SEQUENCE("SEQUENCE","SUE"),
     STUDENT("STUDENT","SDT"),
     SYS_AUTHORITY("SYS_AUTHORITY","SAY"),
-    TEACHER("TEACHER","TCR")
+    TEACHER("TEACHER","TCR"),
+    TEACHER_ROLE_REL("TEACHER_ROLE_REL","TRR")
     ;
 
     private String tableName;

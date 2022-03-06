@@ -21,7 +21,7 @@ public class SysRoleAuthorityView implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String roleAuthorityId;
+    private String roleAuthorityRelId;
 
     private String roleId;
 

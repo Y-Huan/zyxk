@@ -26,10 +26,10 @@
         left join role r on r.role_id = ttr.role_id
         where t.is_del = 1
         <if test="selectStringKey != null and selectStringKey != '' ">
-            t.phone like concat ('%',#{selectStringKey},'%')
+           and t.phone like concat ('%',#{selectStringKey},'%')
         </if>
         <if test="schoolId != null and schoolId != '' ">
-            t.school_id = #{schoolId}
+           and t.school_id = #{schoolId}
         </if>
     </select>
 </mapper>

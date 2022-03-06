@@ -1,15 +1,13 @@
 package com.zyy.zyxk.service.college;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.college.CollegeListVo;
 import com.zyy.zyxk.api.vo.college.InsertCollegeVo;
-import com.zyy.zyxk.api.vo.college.SelectCollegeVo;
 import com.zyy.zyxk.api.vo.college.UpdateCollegeVo;
+import com.zyy.zyxk.api.vo.selectVo.BaseSelectVo;
 import com.zyy.zyxk.dao.entity.College;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @author fl1109
@@ -19,17 +17,16 @@ import java.util.List;
 public interface CollegeService extends IService<College> {
     /**
      * 分院列表
-     * @param selectCollegeVo
      * @return
      */
-    List<CollegeListVo> selectCollegeList(SelectCollegeVo selectCollegeVo);
+    IPage<CollegeListVo> selectCollegeList(IPage<CollegeListVo> page, BaseSelectVo baseSelectVo,String schoolId);
 
     /**
      * 分院详情
      * @param collegeId
      * @return
      */
-    CollegeListVo selectCollegeById(@Param("collegeId")String collegeId);
+    CollegeListVo selectCollegeById(String collegeId);
 
     /**
      * 增加分院
@@ -50,4 +47,6 @@ public interface CollegeService extends IService<College> {
      * @param collegeId
      */
     void deleteCollege(String collegeId);
+
+
 }

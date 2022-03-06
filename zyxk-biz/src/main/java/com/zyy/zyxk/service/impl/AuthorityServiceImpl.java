@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Yang.H
@@ -86,9 +85,9 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
     }
 
     @Override
-    public List<AuthorityVo> getList(IPage page, BaseSelectVo baseSelectVo) {
+    public IPage<AuthorityVo> getList(IPage page, BaseSelectVo baseSelectVo) {
         //查询信息返回
-        return sysAuthorityMapper.getList(page,baseSelectVo.getSelectStringKey());
+        return sysAuthorityMapper.getList(page,baseSelectVo.getSelectStringKey(),baseSelectVo.getSelectLongKey());
     }
 
     public boolean authorityName(AuthorityVo authorityVo){
@@ -104,5 +103,11 @@ public class AuthorityServiceImpl extends ServiceImpl<SysAuthorityMapper, SysAut
             return true;
         }
         return false;
+    }
+
+    @Override
+    public SysAuthority deatil(String authorityId) {
+
+        return sysAuthorityMapper.selectById(authorityId);
     }
 }

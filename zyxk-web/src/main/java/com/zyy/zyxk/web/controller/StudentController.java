@@ -28,11 +28,7 @@ public class StudentController {
     @ApiOperation("学生选择导师接口")
     public Response teacherRel(String teacherId, HttpServletRequest request){
         UserJwtVo currentUser = JwtUtil.getCurrentUser(request.getHeader("token"));
-        try {
-            studentService.teacherRel(teacherId,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        studentService.teacherRel(teacherId,currentUser);
         return Response.success("选择成功");
     }
 }

@@ -3,6 +3,8 @@ package com.zyy.zyxk.api.vo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Yang.H
  * @version 1.0
@@ -29,5 +31,6 @@ public class AuthorityVo {
     @ApiModelProperty("权限编码")
     private String authorityPermission;
 
+    private LocalDateTime createTime;
 
 }

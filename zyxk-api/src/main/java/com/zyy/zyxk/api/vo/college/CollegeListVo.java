@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * @author fl
  * @date 2022-02-28
@@ -24,4 +26,8 @@ public class CollegeListVo {
     private String schoolName;
     @ApiModelProperty(value = "学校地址")
     private String schoolAddress;
+    @ApiModelProperty(value = "院长手机号")
+    private String deanPhone;
+
+    private LocalDateTime createTime;
 }

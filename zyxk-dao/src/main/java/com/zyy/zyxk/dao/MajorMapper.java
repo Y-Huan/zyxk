@@ -1,13 +1,11 @@
 package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zyy.zyxk.api.vo.major.MajorListVo;
-import com.zyy.zyxk.api.vo.major.SelectMajorVo;
 import com.zyy.zyxk.api.vo.major.UpdateMajorVo;
 import com.zyy.zyxk.dao.entity.Major;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @author Yang.H
@@ -18,10 +16,13 @@ public interface MajorMapper extends BaseMapper<Major> {
 
     /**
      * 专业列表
-     * @param selectMajorVo
      * @return
      */
-    List<MajorListVo> selectMajorList(SelectMajorVo selectMajorVo);
+    IPage<MajorListVo>selectMajorList(IPage<MajorListVo> page,
+                                      @Param("majorName")String majorName,
+                                      @Param("personInChargeName")String personInChargeName,
+                                      @Param("phone")String phone
+                                        );
 
     /**
      * 专业详情

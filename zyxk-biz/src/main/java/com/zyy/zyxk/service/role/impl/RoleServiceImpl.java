@@ -16,8 +16,11 @@ import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.dao.RoleAuthorityRelMapper;
 import com.zyy.zyxk.dao.RoleMapper;
+import com.zyy.zyxk.dao.SysAuthorityMapper;
 import com.zyy.zyxk.dao.entity.Role;
 import com.zyy.zyxk.dao.entity.RoleAuthorityRel;
+import com.zyy.zyxk.dao.entity.SysAuthority;
+import com.zyy.zyxk.service.common.CommonService;
 import com.zyy.zyxk.service.role.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -45,6 +48,12 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Autowired
     private RoleAuthorityRelMapper roleAuthorityRelMapper;
 
+    @Autowired
+    private SysAuthorityMapper sysAuthorityMapper;
+
+    @Autowired
+    private CommonService commonService;
+
     @Override
     @Transactional
     public void addRole(RoleVo roleVo, UserJwtVo currentUser) {
@@ -54,13 +63,26 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         }
         //设置信息新增
         Role role = new Role();
+        role.setRoleId(commonService.getSequence("ROLE",null));
         role.setRoleName(roleVo.getRoleName());
         role.setRoleComment(roleVo.getRoleComment());
         role.setCreator(currentUser.getId());
         role.setCreateTime(LocalDateTime.now());
         role.setIsDel(true);
         roleMapper.insert(role);
-
+        //插入角色之后将所有权限赋给该角色但是是未启用状态
+        QueryWrapper<SysAuthority> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("is_del",true);
+        List<SysAuthority> authorities=sysAuthorityMapper.selectList(queryWrapper);
+        List<RoleAuthorityRel> roleAuthorities=new ArrayList<>();
+        for (SysAuthority authority:authorities) {
+            RoleAuthorityRel roleAuthority=new RoleAuthorityRel();
+            roleAuthority.setAuthorityId(authority.getAuthorityId());
+            roleAuthority.setRoleId(role.getRoleId());
+            roleAuthority.setCreator(currentUser.getId());
+            roleAuthority.setCreateTime(LocalDateTime.now());
+            roleAuthorityRelMapper.insert(roleAuthority);
+        }
     }
 
     @Override
@@ -79,6 +101,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
+    @Transactional
     public void updateRole(RoleAuthorityListVo roleAuthorityVo, UserJwtVo currentUser) {
         //查询是否有这个角色
         Role role = roleMapper.selectById(roleAuthorityVo.getRoleId());
@@ -99,7 +122,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
             if(menu.getMenu().getAuthorityType()!=1) {
                 //添加菜单权限选择
                 RoleAuthorityRel roleAuthority = new RoleAuthorityRel();
-                roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityId());
+                roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityRelId());
                 roleAuthority.setIsDel(menu.getMenu().getIsEnable());
                 roleAuthorityRels.add(roleAuthority);
 
@@ -107,7 +130,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
                 List<RoleAuthorityVo> roleAuthorityVos = menu.getAuthorities();
                 for (RoleAuthorityVo roleAuthorityVo1 : roleAuthorityVos) {
                     roleAuthorityVo1 = new RoleAuthorityVo();
-                    roleAuthorityVo1.setRoleAuthorityId(roleAuthorityVo1.getRoleAuthorityId());
+                    roleAuthorityVo1.setRoleAuthorityRelId((roleAuthorityVo1.getRoleAuthorityRelId()));
                     roleAuthorityVo1.setIsEnable(roleAuthorityVo1.getIsEnable());
                     roleAuthorityRels.add(roleAuthority);
                 }
@@ -144,7 +167,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
-    public List<RoleVo> getList(IPage page, String selectStringKey) {
+    public IPage<RoleVo> getList(IPage page, String selectStringKey) {
         return roleMapper.getList(page,selectStringKey);
     }
 
@@ -163,6 +186,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
                 //赋值菜单vo
                 BeanUtil.copyProperties(menu, roleAuthorityVo);
+
                 roleAuthorityGroupVo.setMenu(roleAuthorityVo);
 
                 //获取权限列表

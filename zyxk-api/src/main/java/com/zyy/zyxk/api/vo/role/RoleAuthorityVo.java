@@ -17,7 +17,7 @@ public class RoleAuthorityVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("角色权限id")
-    private String roleAuthorityId;
+    private String roleAuthorityRelId;
 
     @ApiModelProperty("角色id")
     private String roleId;

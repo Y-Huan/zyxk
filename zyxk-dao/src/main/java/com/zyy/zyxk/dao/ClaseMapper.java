@@ -1,13 +1,11 @@
 package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zyy.zyxk.api.vo.clase.ClaseListVo;
-import com.zyy.zyxk.api.vo.clase.SelectClaseVo;
 import com.zyy.zyxk.api.vo.clase.UpdateClaseVo;
 import com.zyy.zyxk.dao.entity.Clase;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @author fl
@@ -19,17 +17,17 @@ public interface ClaseMapper extends BaseMapper<Clase> {
 
     /**
      * 班级列表
-     * @param selectClaseVo
+
      * @return
      */
-    List<ClaseListVo> selectClaseList(SelectClaseVo selectClaseVo);
+    IPage<ClaseListVo> selectClaseList(IPage<ClaseListVo> page,@Param("clase")String claseName,@Param("majorName")String majorName,@Param("schoolId")String schoolId);
 
     /**
      * 班级详情
      * @param claseId
      * @return
      */
-    Clase selectClaseById(@Param(value = "claseId") String claseId);
+    ClaseListVo selectClaseById(@Param("claseId") String claseId);
 
     /**
      * 修改班级

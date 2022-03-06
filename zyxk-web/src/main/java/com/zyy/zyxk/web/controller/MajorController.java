@@ -1,5 +1,7 @@
 package com.zyy.zyxk.web.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.major.InsertMajorVo;
 import com.zyy.zyxk.api.vo.major.MajorListVo;
@@ -9,6 +11,7 @@ import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.major.MajorService;
 import com.zyy.zyxk.service.util.JwtUtil;
+import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,15 +20,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author fl
  * @date 2022-02-15
  **/
 @Slf4j
-@RequestMapping("/major")
+@RequestMapping("major")
 @RestController
 @Api(tags = "专业")
 public class MajorController {
@@ -33,42 +34,34 @@ public class MajorController {
     @Resource
     private MajorService majorService;
 
-    @PostMapping("/list")
+    @GetMapping("list")
     @ApiOperation(value = "专业列表" , notes = "专业列表")
-    public Response selectMajorList(@RequestBody SelectMajorVo selectMajorVo){
-        List<MajorListVo> majorList = new ArrayList<>();
-        try {
-            majorList = majorService.selectMajorList(selectMajorVo);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+    public Response<IPage<MajorListVo>> selectMajorList( SelectMajorVo selectMajorVo){
+        IPage<MajorListVo> page = new Page<>();
+        PageUtil.setPage(selectMajorVo.getPageNo(), selectMajorVo.getPageSize(), page);
+        IPage<MajorListVo> majorList = majorService.selectMajorList(page,selectMajorVo);
         return Response.success("获取成功",majorList);
     }
 
-    @GetMapping("/{majorId}")
+    @GetMapping("detail")
     @ApiOperation(value = "专业详情" , notes = "专业详情")
-    public Response selectMajorById(@PathVariable String majorId){
+    public Response selectMajorById(String majorId){
         MajorListVo major = majorService.selectedMajorById(majorId);
         return Response.success("查询成功",major);
     }
 
-    @DeleteMapping("/{majorId}")
+    @PostMapping("del")
     @ApiOperation(value = "删除专业" , notes = "删除专业")
-    public Response deleteMajorById(@PathVariable String majorId){
-        if(StringUtils.isEmpty(majorId)){
+    public Response deleteMajorById(@RequestBody InsertMajorVo insertMajorVo){
+        if(StringUtils.isEmpty(insertMajorVo.getMajorId())){
             return Response.fail(ErrorCode.Major_Id_Invalid);
         }
-        try {
-            majorService.deleteMajor(majorId);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
-
+        majorService.deleteMajor(insertMajorVo.getMajorId());
         return Response.success("更新成功");
 
     }
 
-    @PostMapping("/add")
+    @PostMapping("add")
     @ApiOperation(value = "增加专业",notes = "增加专业")
     public Response addMajor(@RequestBody InsertMajorVo insertMajorVo, HttpServletRequest request){
         String token = request.getHeader("token");
@@ -76,25 +69,16 @@ public class MajorController {
         if(StringUtils.isEmpty(insertMajorVo.getMajorName())){
             return Response.fail(ErrorCode.No_Major_Name);
         }
-
-        try {
-            majorService.addMajor(insertMajorVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        majorService.addMajor(insertMajorVo,currentUser);
         return Response.success("更新成功");
     }
 
-    @PutMapping("/update")
+    @PostMapping("update")
     @ApiOperation(value = "修改专业",notes = "修改专业")
     public Response updateMajor(@RequestBody UpdateMajorVo updateMajorVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-        try {
-            majorService.updateMajor(updateMajorVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        majorService.updateMajor(updateMajorVo,currentUser);
         return Response.success("更新成功");
     }
 }

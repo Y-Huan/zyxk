@@ -1,5 +1,6 @@
 package com.zyy.zyxk.service.school;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.school.SchoolVo;
@@ -15,4 +16,10 @@ public interface SchoolService extends IService<School> {
     void add(SchoolVo schoolVo, UserJwtVo currentUser);
     //删除学校
     void delSchool(String schoolId, UserJwtVo currentUser);
+    //学校列表
+    IPage<SchoolVo> getList(IPage<SchoolVo> page,String selectStringKey, UserJwtVo currentUser);
+    //学校信息
+    SchoolVo detail(String schoolId);
+    //编辑学校
+    void updateSchool(SchoolVo schoolVo);
 }
