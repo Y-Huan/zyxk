@@ -117,12 +117,17 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         roleMapper.updateById(role);
 
         List<RoleAuthorityGroupVo> authorities =roleAuthorityVo.getAuthoritys();
+
         List<RoleAuthorityRel> roleAuthorityRels=new ArrayList<>();
         for (RoleAuthorityGroupVo menu:authorities) {
             if(menu.getMenu().getAuthorityType()!=1) {
                 //添加菜单权限选择
                 RoleAuthorityRel roleAuthority = new RoleAuthorityRel();
-                roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityRelId());
+                if(StringUtils.isEmpty(menu.getMenu().getRoleAuthorityRelId())) {
+                    roleAuthority.setRoleAuthorityRelId(commonService.getSequence("ROLE_AUTHORITY_REL",null));
+                }else {
+                    roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityRelId());
+                }
                 roleAuthority.setIsDel(menu.getMenu().getIsEnable());
                 roleAuthorityRels.add(roleAuthority);
 
@@ -130,7 +135,11 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
                 List<RoleAuthorityVo> roleAuthorityVos = menu.getAuthorities();
                 for (RoleAuthorityVo roleAuthorityVo1 : roleAuthorityVos) {
                     roleAuthorityVo1 = new RoleAuthorityVo();
-                    roleAuthorityVo1.setRoleAuthorityRelId((roleAuthorityVo1.getRoleAuthorityRelId()));
+                    if(StringUtils.isEmpty(roleAuthorityVo1.getRoleAuthorityRelId())){
+                        roleAuthorityVo1.setRoleAuthorityRelId(commonService.getSequence("ROLE_AUTHORITY_REL",null));
+                    }else {
+                        roleAuthorityVo1.setRoleAuthorityRelId((roleAuthorityVo1.getRoleAuthorityRelId()));
+                    }
                     roleAuthorityVo1.setIsEnable(roleAuthorityVo1.getIsEnable());
                     roleAuthorityRels.add(roleAuthority);
                 }
