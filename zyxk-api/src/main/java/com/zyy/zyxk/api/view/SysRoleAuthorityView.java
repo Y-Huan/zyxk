@@ -39,4 +39,5 @@ public class SysRoleAuthorityView implements Serializable {
 
     private Boolean isEnable;
 
+    private Boolean isDel;
 }

@@ -41,5 +41,5 @@ public class RoleAuthorityRel implements Serializable{
 
     private Boolean isDel;
 
-
+    private Boolean isEnable;
 }

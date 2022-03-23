@@ -3,9 +3,9 @@
 <mapper namespace="com.zyy.zyxk.dao.RoleAuthorityRelMapper">
     <insert id="insertRoleAuthority">
         insert into role_authority_rel
-            (role_authority_rel_id,role_id,authority_id,creator,create_time,is_del)
-        VALUE (#{roleAuthorityRelId},#{roleId},#{authorityId},#{creator},now(),#{isDel})
-        ON DUPLICATE KEY UPDATE is_del = #{isDel},update_time = now()
+            (role_authority_rel_id,role_id,authority_id,creator,create_time,is_del,is_enable)
+        VALUE (#{roleAuthorityRelId},#{roleId},#{authorityId},#{creator},now(),#{isDel},#{isEnable})
+        ON DUPLICATE KEY UPDATE is_enable = #{isEnable},update_time = now()
     </insert>
     <update id="delAllRoleAuthority">
         update role_authority_rel
@@ -15,7 +15,7 @@
         where role_id = #{roleId}
     </update>
     <select id="getList" resultType="com.zyy.zyxk.api.view.SysRoleAuthorityView">
-        SELECT ra.role_authority_rel_id,a.authority_id,a.authority_name,a.authority_type,a.parent_authority_id, ra.is_del as isEnable
+        SELECT ra.role_authority_rel_id,a.authority_id,a.authority_name,a.authority_type,a.parent_authority_id, ra.is_del, ra.is_enable
         from sys_authority a
                  left join role_authority_rel ra on a.authority_id=ra.authority_id
 								 AND ra.role_id=#{roleId}

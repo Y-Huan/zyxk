@@ -21,5 +21,6 @@ public interface RoleAuthorityRelMapper extends BaseMapper<RoleAuthorityRel> {
                              @Param("roleId") String roleId,
                              @Param("authorityId") String authorityId,
                              @Param("creator") String creator,
-                             @Param("isDel") Boolean isDel);
+                             @Param("isDel") Boolean isDel,
+                             @Param("isEnable") Boolean isEnable);
 }

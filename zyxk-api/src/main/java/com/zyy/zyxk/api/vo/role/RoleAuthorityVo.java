@@ -43,4 +43,6 @@ public class RoleAuthorityVo implements Serializable {
     @ApiModelProperty("启用标识：true、启用；false、禁用（默认）")
     private Boolean isEnable;
 
+    @ApiModelProperty("启用标识：true、启用；false、禁用（默认）")
+    private Boolean isDel;
 }

@@ -128,33 +128,37 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
                 }else {
                     roleAuthority.setRoleAuthorityRelId(menu.getMenu().getRoleAuthorityRelId());
                 }
-                roleAuthority.setIsDel(menu.getMenu().getIsEnable());
+                roleAuthority.setRoleId(roleAuthorityVo.getRoleId());
+                roleAuthority.setAuthorityId(menu.getMenu().getAuthorityId());
+                roleAuthority.setIsEnable(menu.getMenu().getIsEnable());
+                roleAuthority.setIsDel(true);
                 roleAuthorityRels.add(roleAuthority);
 
                 //添加按钮权限选择
                 List<RoleAuthorityVo> roleAuthorityVos = menu.getAuthorities();
                 for (RoleAuthorityVo roleAuthorityVo1 : roleAuthorityVos) {
-                    roleAuthorityVo1 = new RoleAuthorityVo();
+                    RoleAuthorityRel roleAuthorityVo2 = new RoleAuthorityRel();
                     if(StringUtils.isEmpty(roleAuthorityVo1.getRoleAuthorityRelId())){
-                        roleAuthorityVo1.setRoleAuthorityRelId(commonService.getSequence("ROLE_AUTHORITY_REL",null));
+                        roleAuthorityVo2.setRoleAuthorityRelId(commonService.getSequence("ROLE_AUTHORITY_REL",null));
                     }else {
-                        roleAuthorityVo1.setRoleAuthorityRelId((roleAuthorityVo1.getRoleAuthorityRelId()));
+                        roleAuthorityVo2.setRoleAuthorityRelId((roleAuthorityVo1.getRoleAuthorityRelId()));
                     }
-                    roleAuthorityVo1.setIsEnable(roleAuthorityVo1.getIsEnable());
-                    roleAuthorityRels.add(roleAuthority);
+                    roleAuthorityVo2.setRoleId(roleAuthorityVo.getRoleId());
+                    roleAuthorityVo2.setAuthorityId(roleAuthorityVo1.getAuthorityId());
+                    roleAuthorityVo2.setIsEnable(roleAuthorityVo1.getIsEnable());
+                    roleAuthorityVo2.setIsDel(true);
+                    roleAuthorityRels.add(roleAuthorityVo2);
                 }
             }
         }
 
-        QueryWrapper<RoleAuthorityRel> wrapper=new QueryWrapper<>();
-        wrapper.eq("role_id",roleAuthorityVo.getRoleId());
-        List<RoleAuthorityRel> resultDoList=roleAuthorityRelMapper.selectList(wrapper);
+
 
         //赋值 resultDoList
-        for (RoleAuthorityRel roleAuthority:resultDoList) {
+        for (RoleAuthorityRel roleAuthority:roleAuthorityRels) {
             RoleAuthorityRel sourceRoleAuthority=roleAuthorityRels.stream().filter(roleAuthorityRel -> roleAuthorityRel.getRoleAuthorityRelId().equals(roleAuthority.getRoleAuthorityRelId())).findFirst().get();
-            roleAuthority.setIsDel(sourceRoleAuthority.getIsDel());
-            roleAuthorityRelMapper.insertRoleAuthority(roleAuthority.getRoleAuthorityRelId(),roleAuthority.getRoleId(),roleAuthority.getAuthorityId(),roleAuthority.getCreator(),roleAuthority.getIsDel());
+            roleAuthority.setIsEnable(sourceRoleAuthority.getIsEnable());
+            roleAuthorityRelMapper.insertRoleAuthority(roleAuthority.getRoleAuthorityRelId(),roleAuthority.getRoleId(),roleAuthority.getAuthorityId(),roleAuthority.getCreator(),roleAuthority.getIsDel(),roleAuthority.getIsEnable());
         }
 
     }
