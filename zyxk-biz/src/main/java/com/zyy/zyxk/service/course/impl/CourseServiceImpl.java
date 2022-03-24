@@ -1,6 +1,7 @@
 package com.zyy.zyxk.service.course.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.course.CourseVo;
@@ -17,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author fl
@@ -37,8 +37,8 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      * @return
      */
     @Override
-    public List<CourseVo> selectCourseList(SelectCourseVo selectCourseVo) {
-        return courseMapper.selectCourseList(selectCourseVo);
+    public IPage<CourseVo> selectCourseList(IPage<CourseVo> page, SelectCourseVo selectCourseVo, UserJwtVo currentUser){
+        return courseMapper.selectCourseList(page,selectCourseVo,currentUser);
     }
 
     /**

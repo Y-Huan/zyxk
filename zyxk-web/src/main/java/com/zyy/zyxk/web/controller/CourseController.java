@@ -1,5 +1,7 @@
 package com.zyy.zyxk.web.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.course.CourseVo;
 import com.zyy.zyxk.api.vo.course.InsertCourseVo;
@@ -9,6 +11,7 @@ import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.course.CourseService;
 import com.zyy.zyxk.service.util.JwtUtil;
+import com.zyy.zyxk.service.util.PageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author fl
@@ -34,13 +35,12 @@ public class CourseController {
 
     @ApiOperation(value = "课程列表" , notes = "课程列表")
     @PostMapping("/list")
-    public Response selectCourseList(@RequestBody SelectCourseVo selectCourseVo){
-        List<CourseVo> courseVoList = new ArrayList<>();
-        try {
-            courseVoList = courseService.selectCourseList(selectCourseVo);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+    public Response<IPage<CourseVo>> selectCourseList(@RequestBody SelectCourseVo selectCourseVo, HttpServletRequest request){
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+        IPage<CourseVo> page = new Page<>();
+        PageUtil.setPage(selectCourseVo.getPageNo(), selectCourseVo.getPageSize(), page);
+        IPage<CourseVo> courseVoList = courseService.selectCourseList(page,selectCourseVo,currentUser);
         return Response.success("获取成功",courseVoList);
     }
 

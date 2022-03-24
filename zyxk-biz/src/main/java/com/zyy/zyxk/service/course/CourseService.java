@@ -1,5 +1,6 @@
 package com.zyy.zyxk.service.course;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.course.CourseVo;
@@ -9,8 +10,6 @@ import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
 import com.zyy.zyxk.dao.entity.Course;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 /**
  * @author fl
  * @Date 2022-02-16
@@ -18,10 +17,12 @@ import java.util.List;
 public interface CourseService extends IService<Course> {
     /**
      * 课程列表
+     * @param page
+     * @param currentUser
      * @param selectCourseVo
      * @return
      */
-    List<CourseVo> selectCourseList(SelectCourseVo selectCourseVo);
+    IPage<CourseVo> selectCourseList(IPage<CourseVo> page, SelectCourseVo selectCourseVo,UserJwtVo currentUser);
 
     /**
      * 课程详情

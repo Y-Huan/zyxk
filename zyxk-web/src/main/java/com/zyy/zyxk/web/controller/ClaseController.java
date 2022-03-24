@@ -36,7 +36,7 @@ public class ClaseController {
 
     @ApiOperation(value = "班级列表" , notes = "班级列表")
     @PostMapping("list")
-    public Response selectClaseList(@RequestBody SelectClaseVo selectClaseVo,HttpServletRequest request){
+    public Response<IPage<ClaseListVo>> selectClaseList(@RequestBody SelectClaseVo selectClaseVo, HttpServletRequest request){
         UserJwtVo currentUser = JwtUtil.getCurrentUser( request.getHeader("token"));
         IPage<ClaseListVo> page = new Page<>();
         PageUtil.setPage(selectClaseVo.getPageNo(), selectClaseVo.getPageSize(), page);
