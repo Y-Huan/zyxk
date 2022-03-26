@@ -20,7 +20,10 @@ public interface ClaseMapper extends BaseMapper<Clase> {
 
      * @return
      */
-    IPage<ClaseListVo> selectClaseList(IPage<ClaseListVo> page,@Param("clase")String claseName,@Param("majorName")String majorName,@Param("schoolId")String schoolId);
+    IPage<ClaseListVo> selectClaseList(IPage<ClaseListVo> page,
+                                       @Param("claseName")String claseName,
+                                       @Param("majorName")String majorName,
+                                       @Param("schoolId")String schoolId);
 
     /**
      * 班级详情

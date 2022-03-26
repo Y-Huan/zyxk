@@ -34,8 +34,8 @@ public class Clase implements Serializable{
     private String claseName;
     @ApiModelProperty(value = "专业ID")
     private String majorId;
-    @ApiModelProperty(value = "辅导员")
-    private String instructor;
+    @ApiModelProperty(value = "学校ID")
+    private String schoolId;
     @ApiModelProperty(value = "教师ID")
     private String teacherId;
     @ApiModelProperty(value = "创建者")

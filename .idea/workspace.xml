@@ -5,45 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe7d0911-39ee-4045-9a24-428f41606251" name="Default Changelist" comment="自增ID相关注解和方法完成">
-      <change afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/LoginInfoVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/TeacherVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/student/StudentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/student/impl/StudentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/teacher/TeacherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/teacher/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/course/InsertCourseVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/course/InsertCourseVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/role/RoleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/role/RoleVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/clase/ClaseListVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/clase/ClaseListVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/clase/UpdateClaseVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/clase/UpdateClaseVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/course/SelectCourseVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/src/main/java/com/zyy/zyxk/api/vo/course/SelectCourseVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-api/target/classes/com/zyy/zyxk/api/vo/UserJwtVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/target/classes/com/zyy/zyxk/api/vo/UserJwtVo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-api/target/classes/com/zyy/zyxk/api/vo/selectVo/BaseSelectVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-api/target/classes/com/zyy/zyxk/api/vo/selectVo/BaseSelectVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/clase/impl/ClaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/clase/impl/ClaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/course/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/course/CourseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/course/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/course/impl/CourseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/RedisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/impl/RedisServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/role/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/role/impl/RoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-biz/target/classes/com/zyy/zyxk/service/RedisService.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/target/classes/com/zyy/zyxk/service/RedisService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-biz/target/classes/com/zyy/zyxk/service/impl/RedisServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/target/classes/com/zyy/zyxk/service/impl/RedisServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-biz/target/classes/com/zyy/zyxk/service/util/ExcelUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-biz/target/classes/com/zyy/zyxk/service/util/ExcelUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/constant/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/constant/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/EncryptUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-common/src/main/java/com/zyy/zyxk/common/util/EncryptUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-common/target/classes/META-INF/zyxk-common.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-common/target/classes/com/zyy/zyxk/common/constant/ErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-common/target/classes/com/zyy/zyxk/common/constant/ErrorCode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-common/target/classes/com/zyy/zyxk/common/util/EncryptUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-common/target/classes/com/zyy/zyxk/common/util/EncryptUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/TeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/TeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/ClaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/ClaseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Clase.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/java/com/zyy/zyxk/dao/entity/Clase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/ClaseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper/ClaseMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/ClaseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/ClaseMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/CollegeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/CollegeMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/CourseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/CourseMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/MajorMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/MajorMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/RoleAuthorityRelMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/RoleAuthorityRelMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/RoleMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/RoleMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/SchoolMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/SchoolMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/SequenceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/SequenceMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/StudentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/StudentMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/SysAuthorityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/com/zyy/zyxk/dao/SysAuthorityMapper.class" afterDir="false" />
@@ -66,12 +52,13 @@
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/MajorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/MajorMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/RoleAuthorityRelMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/RoleAuthorityRelMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/RoleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/SchoolMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/SchoolMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/SequenceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/SequenceMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/StudentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/SysAuthorityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/SysAuthorityMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-dao/target/classes/mapper/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/CollegeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/CollegeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/ClaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/ClaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/CourseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-web/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/src/main/resources/application-test.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-web/target/classes/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/target/classes/application-test.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zyxk-web/target/classes/com/zyy/zyxk/web/config/SwaggerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/zyxk-web/target/classes/com/zyy/zyxk/web/config/SwaggerConfig.class" afterDir="false" />
@@ -112,8 +99,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -784,7 +771,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ZYXK_Manager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -796,6 +783,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -806,6 +794,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kevin Y\Desktop\毕业设计相关\zyxk\zyxk-dao\src\main\resources\mapper" />
       <recent name="$PROJECT_DIR$/zyxk-dao/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/ierp-dao/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/ierp-common/src/main/java/com/huge/ierp/common/util" />
@@ -831,17 +820,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -917,7 +895,17 @@
       <workItem from="1645527576232" duration="7200000" />
       <workItem from="1645703992442" duration="3375000" />
       <workItem from="1645715365778" duration="1996000" />
-      <workItem from="1646196264431" duration="26319000" />
+      <workItem from="1646196264431" duration="26489000" />
+      <workItem from="1646285879029" duration="27725000" />
+      <workItem from="1646369952122" duration="30349000" />
+      <workItem from="1646454430893" duration="2233000" />
+      <workItem from="1646560479561" duration="4069000" />
+      <workItem from="1646570000973" duration="252000" />
+      <workItem from="1647767477279" duration="4240000" />
+      <workItem from="1647961595993" duration="5108000" />
+      <workItem from="1648031113255" duration="10143000" />
+      <workItem from="1648120614866" duration="8397000" />
+      <workItem from="1648306193786" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="根据权限分页查询用户">
       <created>1630745978658</created>
@@ -1220,7 +1208,28 @@
       <option name="project" value="LOCAL" />
       <updated>1645018379441</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="登录，修改密码，退出登录，角色列表，新增角色，教师列表接口联调完成，&#10;核心令牌桶demo完成">
+      <created>1646243477788</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1646243477788</updated>
+    </task>
+    <task id="LOCAL-00045" summary="联调页面，修改部分接口">
+      <created>1646570123774</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1646570123774</updated>
+    </task>
+    <task id="LOCAL-00046" summary="角色赋予权限bug修复">
+      <created>1648031279081</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1648031279081</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1278,12 +1287,12 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
+    <option name="COLUMN_ID_ORDER">
       <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
       </list>
     </option>
   </component>
@@ -1314,9 +1323,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update addROle&#10;add badeUserCompany" />
-    <MESSAGE value="修改添加角色和用户的条件" />
-    <MESSAGE value="修改用户禁用功能" />
     <MESSAGE value="添加用户模糊查询的功能" />
     <MESSAGE value="删除用户修改——不可删除自己账号" />
     <MESSAGE value="禁用用户添加修改用户时间" />
@@ -1339,7 +1345,10 @@
     <MESSAGE value="删除日志信息" />
     <MESSAGE value="根据ID获取供应商信息接口类型更改" />
     <MESSAGE value="自增ID相关注解和方法完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="自增ID相关注解和方法完成" />
+    <MESSAGE value="登录，修改密码，退出登录，角色列表，新增角色，教师列表接口联调完成，&#10;核心令牌桶demo完成" />
+    <MESSAGE value="联调页面，修改部分接口" />
+    <MESSAGE value="角色赋予权限bug修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="角色赋予权限bug修复" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1369,8 +1378,43 @@
           <line>286</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/role/impl/RoleServiceImpl.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/teacher/impl/TeacherServiceImpl.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/teacher/impl/TeacherServiceImpl.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/CollegeController.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-biz/src/main/java/com/zyy/zyxk/service/major/impl/MajorServiceImpl.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zyxk-web/src/main/java/com/zyy/zyxk/web/controller/ClaseController.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.zyy.zyxk.api.vo.role.RoleAuthorityListVo" memberName="authoritys" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

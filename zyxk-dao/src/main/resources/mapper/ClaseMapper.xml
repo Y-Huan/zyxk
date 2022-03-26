@@ -8,14 +8,15 @@
             c.clase_name as claseName,
             c.major_id as majorId,
             c.teacher_id as teacherId,
-            t.name as headmasterName,
+            t.teacher_name as headmasterName,
             t.phone as headmasterPhone,
-            m.major_name as majorName
+            m.major_name as majorName,
+            c.create_time
         from clase c
         left join teacher t on c.teacher_id = t.teacher_id
         left join major m on c.major_id = m.major_id
         where c.is_del = true
-          and c.school_id
+          and c.school_id = #{schoolId}
         <if test="claseName != null and claseName != ''">
             and c.clase_name like concat('%',#{claseName},'%')
         </if>
@@ -30,7 +31,7 @@
             c.clase_name as claseName,
             c.major_id as majorId,
             c.teacher_id as teacherId,
-            t.name as headmasterName,
+            t.teacher_name as headmasterName,
             t.phone as headmasterPhone,
             m.major_name as majorName
         from clase c

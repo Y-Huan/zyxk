@@ -95,6 +95,7 @@ public class ClaseServiceImpl extends ServiceImpl<ClaseMapper, Clase> implements
         Clase clase = new Clase();
         BeanUtil.copyProperties(insertClaseVo,clase);
         clase.setCreateTime(LocalDateTime.now());
+        clase.setSchoolId(currentUser.getSchoolId());
         clase.setCreator(currentUser.getId());
         claseMapper.insert(clase);
     }
