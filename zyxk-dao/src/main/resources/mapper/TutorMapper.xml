@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zyy.zyxk.dao.TutorMapper">
+
+    <insert id="insertAudit" parameterType="com.zyy.zyxk.dao.entity.AuditTutor" keyProperty="auditTutorId" keyColumn="audit_tutor_id">
+        insert into audit_tutor
+            (audit_status,check_user,creator,create_time,is_del)
+        value(#{auditState},#{checkUser},#{creator},now(),1)
+    </insert>
+
+    <resultMap id="auditTutorList" type="com.zyy.zyxk.api.vo.Tutor.AuditTutorVo">
+        <id property="auditTutorId" column="audit_tutor_id"/>
+        <result property="auditStatus" column="audit_status"/>
+        <result property="checkUser" column="check_user"/>
+        <result property="majorName" column="major_name"/>
+        <result property="creator" column="creator"/>
+        <collection property="tutorVos" column="id = audit_tutor_id" resultMap="auditTutorListDetail" select="tutorList"/>
+    </resultMap>
+
+    <resultMap id="auditTutorListDetail" type="com.zyy.zyxk.api.vo.Tutor.TutorVo">
+        <id property="tutorId" column="audit_tutor_id"/>
+        <result property="teacherId" column="teacher_id"/>
+        <result property="teacherName" column="teacher_name"/>
+        <result property="choiceAmount" column="choice_amount"/>
+    </resultMap>
+
+    <select id="tutorList" resultMap="auditTutorListDetail">
+        select
+            tr.tutor_id,
+            tr.teacher_id,
+            t.teacher_name,
+            tr.choice_amount
+        from tutor tr
+        left join teacher t on t.teacher_id = tr.teacher_id
+        where tr.audit_tutor_id = #{id}
+
+    </select>
+
+
+    <select id="selectAuditTutorList" resultMap="auditTutorList">
+        select
+            atr.audit_tutor_id,
+            atr.audit_status,
+            atr.major,
+            m.major_name,
+            t1.teacher_name as creator,
+            t2.teacher_name as check_user
+        from audit_tutor atr
+        left join major m on m.major_id = atr.major
+        left join teacher t1 on t.teacher_id = atr.creator
+        left join teacher t2 on t.teacher_id = atr.check_user
+        where atr.is_del = 1
+        and choice_time between #{startTime} and #{endTime}
+        <if test="majorId != null and majorId !''">
+           and atr.major = #{majorId}
+        </if>
+    </select>
+    <select id="selectStudentTutorList" resultType="com.zyy.zyxk.api.vo.Tutor.TutorVo">
+        select
+            tr.tutor_id,
+            tr.teacher_id,
+            t.teahcer_name
+        from tutor tr
+        left join teacher t on t.teacher_id = tr.teacher_id
+        where atr.major = #{majorId}
+            and atr.is_del = 1
+            and choice_time between #{startTime} and #{endTime}
+    </select>
+</mapper>

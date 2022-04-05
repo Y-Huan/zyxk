@@ -10,4 +10,15 @@
         from student s
         where s.student_number = #{userName} and is_valid = 1
     </select>
+    <select id="selectStudent" resultType="com.zyy.zyxk.api.vo.student.StudentVo">
+        select
+            s.student_id,
+            s.student_name,
+            s.school_id,
+            s.phone,
+            c.major_id
+        from student s
+        left join clase c on c.clase_id = s.clase_id
+        where s.student_id = #{studentId} and is_valid = 1
+    </select>
 </mapper>

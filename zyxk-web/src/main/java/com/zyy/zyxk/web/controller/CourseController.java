@@ -3,11 +3,9 @@ package com.zyy.zyxk.web.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.UserJwtVo;
-import com.zyy.zyxk.api.vo.course.CourseVo;
-import com.zyy.zyxk.api.vo.course.InsertCourseVo;
-import com.zyy.zyxk.api.vo.course.SelectCourseVo;
-import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
+import com.zyy.zyxk.api.vo.course.*;
 import com.zyy.zyxk.common.constant.ErrorCode;
+import com.zyy.zyxk.common.util.StringUtil;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.course.CourseService;
 import com.zyy.zyxk.service.util.JwtUtil;
@@ -34,8 +32,8 @@ public class CourseController {
     private CourseService courseService;
 
     @ApiOperation(value = "课程列表" , notes = "课程列表")
-    @PostMapping("/list")
-    public Response<IPage<CourseVo>> selectCourseList(@RequestBody SelectCourseVo selectCourseVo, HttpServletRequest request){
+    @GetMapping("/list")
+    public Response<IPage<CourseVo>> selectCourseList( SelectCourseVo selectCourseVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
         IPage<CourseVo> page = new Page<>();
@@ -44,54 +42,64 @@ public class CourseController {
         return Response.success("获取成功",courseVoList);
     }
 
-    @GetMapping("/{courseId}")
-    @ApiOperation(value = "分院详情",notes = "分院详情")
-    public Response selectCourseById(@PathVariable String courseId){
+    @GetMapping("/detail")
+    @ApiOperation(value = "课程详情",notes = "课程详情")
+    public Response selectCourseById( String courseId){
         CourseVo courseVo = courseService.selectCourseById(courseId);
         return Response.success("获取成功",courseVo);
     }
 
-    @PostMapping("/insert")
-    @ApiOperation(value = "增加课程",notes = "增加课程")
+    @PostMapping("/add")
+    @ApiOperation(value = "发布课程",notes = "发布课程")
     public Response insertCourse(@RequestBody InsertCourseVo insertCourseVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-        if(StringUtils.isEmpty(insertCourseVo.getCourseName())){
-            return Response.fail(ErrorCode.No_Course_Name);
+        if(StringUtils.isEmpty(insertCourseVo.getCourseName())  ||  StringUtils.isEmpty(insertCourseVo.getCourseAddress()) ||  insertCourseVo.getTeacherType()==null ||
+           insertCourseVo.getCourseType() ==null ){
+            return Response.fail(ErrorCode.COURSE_INFO_NULL_ERROR);
         }
-
-        try {
-            courseService.addCourse(insertCourseVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+        courseService.addCourse(insertCourseVo,currentUser);
         return Response.success("更新成功");
     }
-    @PutMapping("/update")
-    @ApiOperation(value = "修改分院" , notes = "修改分院")
+    @PostMapping("/update")
+    @ApiOperation(value = "修改课程" , notes = "修改课程")
     public Response updateCollege(@RequestBody UpdateCourseVo updateCourseVo, HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-        try {
-            courseService.updateCourse(updateCourseVo,currentUser);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
+
+        courseService.updateCourse(updateCourseVo,currentUser);
         return Response.success("更新成功");
     }
 
-    @DeleteMapping("/{courseId}")
+    @PostMapping("/del")
     @ApiOperation(value = "删除分院" , notes = "删除分院")
-    public Response deleteCollege(@PathVariable String courseId){
+    public Response deleteCollege(@RequestBody String courseId,HttpServletRequest request){
         if(StringUtils.isEmpty(courseId)){
             return Response.fail(ErrorCode.Course_Id_Invalid);
         }
-        try {
-            courseService.delCourse(courseId);
-        }catch (Exception e){
-            log.info(e.getMessage());
-        }
-
+        courseService.delCourse(courseId);
         return Response.success("更新成功");
+    }
+
+    @ApiOperation("审核课程")
+    @PostMapping("/checkCourse")
+    public Response checkCourse(@RequestBody ChekcCourseVo chekcCourseVo,HttpServletRequest request){
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+        if(StringUtils.isEmpty(chekcCourseVo.getCourseId()) || chekcCourseVo.getAuditStatus()==null){
+            return Response.fail(ErrorCode.BIND_ERROR);
+        }
+        return courseService.checkCourse(chekcCourseVo,currentUser);
+    }
+
+    @ApiOperation("选择课程")
+    @PostMapping("/choice")
+    public Response choiceCourse(@RequestBody ChoiceCourseVo choiceCourseVo,HttpServletRequest request){
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+        if(StringUtils.isEmpty(choiceCourseVo.getCourseId())||StringUtils.isEmpty(choiceCourseVo.getStudentId())){
+            return Response.fail(ErrorCode.BIND_ERROR);
+        }
+        return courseService.choiceCourse(choiceCourseVo,currentUser);
     }
 }

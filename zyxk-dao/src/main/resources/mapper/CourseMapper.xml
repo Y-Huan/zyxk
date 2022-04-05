@@ -3,31 +3,47 @@
 <mapper namespace="com.zyy.zyxk.dao.CourseMapper">
 
     <select id="selectCourseList" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
-        select course_id as courseId,
-                   course_name as courseName,
-            remark,
-            type,
-            teach_type as teachType
+        select
+            c.course_id as courseId,
+            c.course_name as courseName,
+            c.audit_status,
+            t1.teacher_name as checkUser,
+            t2.teacher_name as creator
         from course
+        left join teacher t1 on t1.teacher_id = c.check_user
+        left join teacher t2 on t2.teacher_id = c.creator
         where is_del = true
         <if test="courseName != null and courseName != ''">
-            and course_name like '%${courseName}%'
+            and course_name like concat ('%',#{courseName},'%')
         </if>
-        <if test="type != null and type != ''">
+        <if test="type != null ">
             and type = #{type}
         </if>
-        <if test="teachType != null and teachType != ''">
+        <if test="teachType != null ">
             and teach_type = #{teachType}
         </if>
     </select>
     <select id="selectCourseById" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
-        select course_id as courseId,
-               course_name as courseName,
-               remark,
-               type,
-               teach_type as teachType
+        select
+            c.course_id as courseId,
+            c.course_name as courseName,
+            c.course_address,
+            c.audit_status,
+            c.course_type,
+            c.teach_type,
+            t1.teacher_name as checkUser,
+            t2.teacher_name as creator
+        from course
+        left join teacher t1 on t1.teacher_id = c.check_user
+        left join teacher t2 on t2.teacher_id = c.creator
+        where course_id = #{courseId}
+    </select>
+    <select id="selectCourseDel" resultType="java.lang.String">
+        select
+            course_id
         from course
         where course_id = #{courseId}
+            and choice_time between #{startTime} and #{endTime}
     </select>
 
     <update id="updateCourseById">

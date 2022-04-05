@@ -3,10 +3,8 @@ package com.zyy.zyxk.service.course;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyy.zyxk.api.vo.UserJwtVo;
-import com.zyy.zyxk.api.vo.course.CourseVo;
-import com.zyy.zyxk.api.vo.course.InsertCourseVo;
-import com.zyy.zyxk.api.vo.course.SelectCourseVo;
-import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
+import com.zyy.zyxk.api.vo.course.*;
+import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.dao.entity.Course;
 import org.apache.ibatis.annotations.Param;
 
@@ -32,7 +30,7 @@ public interface CourseService extends IService<Course> {
     CourseVo selectCourseById(@Param("courseId")String courseId);
 
     /**
-     * 添加课程
+     * 发布课程
      * @param insertCourseVo
      * @param currentUser
      */
@@ -50,4 +48,20 @@ public interface CourseService extends IService<Course> {
      * @param courseId
      */
     void delCourse(String courseId);
+
+    /**
+     * 审核课程
+     * @param chekcCourseVo
+     * @param currentUser
+     * @return
+     */
+    Response checkCourse(ChekcCourseVo chekcCourseVo, UserJwtVo currentUser);
+
+    /**
+     *
+     * @param choiceCourseVo
+     * @param currentUser
+     * @return
+     */
+    Response choiceCourse(ChoiceCourseVo choiceCourseVo, UserJwtVo currentUser);
 }

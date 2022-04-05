@@ -17,10 +17,14 @@ public class UpdateCourseVo {
     private String courseId;
     @ApiModelProperty(value = "课程名称")
     private String courseName;
+    @ApiModelProperty(value = "专业Id")
+    private String majorId;
     @ApiModelProperty(value = "备注")
     private String remark;
+    @ApiModelProperty(value = "授课地址")
+    private String courseAddress;
     @ApiModelProperty(value = "课程类型")
-    private Integer type;
+    private Integer courseType;
     @ApiModelProperty(value = "教学类型")
     private Integer teachType;
     @ApiModelProperty(value = "创建者")

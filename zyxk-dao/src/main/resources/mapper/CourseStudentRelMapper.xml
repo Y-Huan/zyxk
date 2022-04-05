@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zyy.zyxk.dao.CourseStudentRelMapper">
+    <select id="selectChoice" resultType="java.lang.String">
+        select
+            csr.course_student_rel_id
+        from course c
+        left join course_student_rel csr on csr.course_id = c.course_id
+        where csr.student_id = #{studentId}
+         and c.choice_time between #{startTime} and #{endTime}
+    </select>
 </mapper>

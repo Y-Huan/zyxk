@@ -20,15 +20,21 @@ public class InsertCourseVo {
     private String courseName;
     @ApiModelProperty(value = "备注")
     private String remark;
+    @ApiModelProperty(value = "专业Id")
+    private String majorId;
     @ApiModelProperty(value = "课程类型")
-    private Integer type;
+    private Integer courseType;
     @ApiModelProperty(value = "教学类型")
-    private Integer teachType;
+    private Integer teacherType;
+    @ApiModelProperty(value = "授课地址")
+    private String courseAddress;
+    @ApiModelProperty(value = "授课老师")
+    private String teacherId;
     @ApiModelProperty(value = "创建者")
     private String creator;
     @ApiModelProperty(value = "开始抢课时间")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
-    private LocalDateTime starterTime;
+    private LocalDateTime choiceTime;
     @ApiModelProperty(value = "创建时间")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private LocalDateTime createTime;

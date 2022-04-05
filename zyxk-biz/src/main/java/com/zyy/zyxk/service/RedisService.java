@@ -12,5 +12,7 @@ public interface RedisService {
     //测试令牌桶
     void test(String id, Integer x);
 
-    void testget( String id);
+    boolean testget( String id);
+    //获取令牌桶的剩余令牌数
+    Integer getListSize(String tutorId);
 }

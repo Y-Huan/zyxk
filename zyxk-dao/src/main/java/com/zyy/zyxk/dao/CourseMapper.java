@@ -9,6 +9,8 @@ import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
 import com.zyy.zyxk.dao.entity.Course;
 import org.apache.ibatis.annotations.Param;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Yang.H
  * @version 1.0
@@ -36,4 +38,8 @@ public interface CourseMapper extends BaseMapper<Course> {
      * @return
      */
     int updateCourseById(UpdateCourseVo updateCourseVo);
+
+    String selectCourseDel(@Param("courseId") String courseId,
+                           @Param("startTime") LocalDateTime now,
+                           @Param("endTime") LocalDateTime plusDays);
 }

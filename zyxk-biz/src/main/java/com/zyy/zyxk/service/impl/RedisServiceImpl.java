@@ -52,18 +52,18 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public void testget(String id) {
+    public boolean testget(String id) {
         ListOperations<String ,String> test =(ListOperations<String ,String> )redisTemplate.opsForList();
-
-
-
         if(test.size(JSON.toJSONString(id))==0){
-            System.out.println("当前令牌已为空");
+            return false;
         }else {
-            System.out.println(test.leftPop(JSON.toJSONString(id) ).toString());
+            return true;
         }
+    }
 
-
-
+    @Override
+    public Integer getListSize(String tutorId) {
+        Integer size = redisTemplate.opsForList().size(tutorId).intValue();
+        return size;
     }
 }
