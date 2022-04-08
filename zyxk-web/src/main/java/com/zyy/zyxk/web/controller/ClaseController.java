@@ -16,9 +16,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -31,8 +31,8 @@ import javax.servlet.http.HttpServletRequest;
 @Api(tags = "班级模块")
 public class ClaseController {
 
-    @Resource
-    private ClaseService claseService;
+    @Autowired
+    ClaseService claseService;
 
     @ApiOperation(value = "班级列表" , notes = "班级列表")
     @PostMapping("list")

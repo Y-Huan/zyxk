@@ -14,7 +14,7 @@
         <result property="checkUser" column="check_user"/>
         <result property="majorName" column="major_name"/>
         <result property="creator" column="creator"/>
-        <collection property="tutorVos" column="id = audit_tutor_id" resultMap="auditTutorListDetail" select="tutorList"/>
+        <collection property="tutorVos" column="id = audit_tutor_id"  select="tutorList"/>
     </resultMap>
 
     <resultMap id="auditTutorListDetail" type="com.zyy.zyxk.api.vo.Tutor.TutorVo">
