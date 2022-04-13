@@ -2,14 +2,13 @@ package com.zyy.zyxk.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.course.CourseVo;
-import com.zyy.zyxk.api.vo.course.SelectCourseVo;
 import com.zyy.zyxk.api.vo.course.UpdateCourseVo;
 import com.zyy.zyxk.dao.entity.Course;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Yang.H
@@ -20,10 +19,9 @@ public interface CourseMapper extends BaseMapper<Course> {
 
     /**
      * 课程列表
-     * @param selectCourseVo
      * @return
      */
-    IPage<CourseVo> selectCourseList(IPage<CourseVo> page, SelectCourseVo selectCourseVo, UserJwtVo currentUser);
+    IPage<CourseVo> selectCourseList(IPage<CourseVo> page, @Param("courseName") String courseName, @Param("schoolId") String schoolId);
 
     /**
      * 课程详情
@@ -42,4 +40,13 @@ public interface CourseMapper extends BaseMapper<Course> {
     String selectCourseDel(@Param("courseId") String courseId,
                            @Param("startTime") LocalDateTime now,
                            @Param("endTime") LocalDateTime plusDays);
+
+    List<CourseVo> getStudentCourseList(@Param("stateTime") LocalDateTime stateTime,
+                                        @Param("endTime") LocalDateTime endTime,
+                                        @Param("schoolId") String schoolId,
+                                        @Param("majorId")String majorId);
+
+    List<CourseVo> getPublicStudentCourseList(@Param("stateTime") LocalDateTime stateTime,
+                                              @Param("endTime") LocalDateTime endTime,
+                                              @Param("schoolId") String schoolId);
 }

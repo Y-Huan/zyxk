@@ -32,6 +32,8 @@ public class InsertCourseVo {
     private String teacherId;
     @ApiModelProperty(value = "创建者")
     private String creator;
+    @ApiModelProperty(value = "可选择人数")
+    private Integer choiceAmount;
     @ApiModelProperty(value = "开始抢课时间")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private LocalDateTime choiceTime;

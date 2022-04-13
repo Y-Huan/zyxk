@@ -35,6 +35,8 @@ public class Course implements Serializable{
     private String courseName;
     @ApiModelProperty(value = "备注")
     private String remark;
+    @ApiModelProperty(value = "学校ID")
+    private String schoolId;
     @ApiModelProperty(value = "授课地址")
     private String courseAddress;
     @ApiModelProperty(value = "授课老师")
@@ -56,9 +58,6 @@ public class Course implements Serializable{
     private Integer teacherType;
     @ApiModelProperty(value = "创建者")
     private String creator;
-    @ApiModelProperty(value = "开始抢课时间")
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
-    private LocalDateTime starterTime;
     @ApiModelProperty(value = "创建时间")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private LocalDateTime createTime;

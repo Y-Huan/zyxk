@@ -64,4 +64,10 @@ public interface CourseService extends IService<Course> {
      * @return
      */
     Response choiceCourse(ChoiceCourseVo choiceCourseVo, UserJwtVo currentUser);
+
+    /**
+     * 学生课程列表
+     * @return
+     */
+    Response getStudentCourseList(UserJwtVo currentUser);
 }

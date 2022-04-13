@@ -20,6 +20,8 @@ public class LoginVo {
 
     private String schoolId;
 
+    private String  authorityPermissions;
+
     private List<String> authorityPermission;
 
     private String token;

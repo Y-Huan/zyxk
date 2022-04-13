@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zyy.zyxk.api.vo.UserJwtVo;
 import com.zyy.zyxk.api.vo.course.*;
 import com.zyy.zyxk.common.constant.ErrorCode;
-import com.zyy.zyxk.common.util.StringUtil;
 import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.service.course.CourseService;
 import com.zyy.zyxk.service.util.JwtUtil;
@@ -92,12 +91,21 @@ public class CourseController {
         return courseService.checkCourse(chekcCourseVo,currentUser);
     }
 
+
+    @ApiOperation("学生课程列表")
+    @GetMapping("/student/courseList")
+    public Response studentCourseList(HttpServletRequest request){
+        String token = request.getHeader("token");
+        UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
+        return courseService.getStudentCourseList(currentUser);
+    }
+
     @ApiOperation("选择课程")
     @PostMapping("/choice")
     public Response choiceCourse(@RequestBody ChoiceCourseVo choiceCourseVo,HttpServletRequest request){
         String token = request.getHeader("token");
         UserJwtVo currentUser = JwtUtil.getCurrentUser(token);
-        if(StringUtils.isEmpty(choiceCourseVo.getCourseId())||StringUtils.isEmpty(choiceCourseVo.getStudentId())){
+        if(StringUtils.isEmpty(choiceCourseVo.getCourseId())){
             return Response.fail(ErrorCode.BIND_ERROR);
         }
         return courseService.choiceCourse(choiceCourseVo,currentUser);

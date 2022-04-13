@@ -1,11 +1,15 @@
 package com.zyy.zyxk.service.student.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyy.zyxk.api.vo.UserJwtVo;
+import com.zyy.zyxk.api.vo.student.StudentVo;
 import com.zyy.zyxk.common.constant.ErrorCode;
 import com.zyy.zyxk.common.exception.BizException;
+import com.zyy.zyxk.common.util.BeanUtil;
 import com.zyy.zyxk.common.util.EncryptUtil;
+import com.zyy.zyxk.common.vo.Response;
 import com.zyy.zyxk.dao.StudentMapper;
 import com.zyy.zyxk.dao.entity.Student;
 import com.zyy.zyxk.service.RedisService;
@@ -14,6 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements StudentService {
@@ -52,5 +60,55 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         student.setPassword(EncryptUtil.encryptPassword(newPassword, student.getSalt()));
         studentMapper.updateById(student);
         redisService.deleteToken(currentUser.getId());
+    }
+
+    @Override
+    public Response studentList(String claseId,UserJwtVo currentUser) {
+        QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
+        studentQueryWrapper.eq("clase_id",claseId);
+        studentQueryWrapper.eq("is_del",true);
+        List<Student> student =  studentMapper.selectList(studentQueryWrapper);
+        return Response.success("获取成功",student);
+    }
+
+    @Override
+    @Transactional
+    public Response addStudent(StudentVo studentVo, UserJwtVo currentUser) {
+        QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
+        studentQueryWrapper.eq("student_number",studentVo.getStudentNumber());
+        Student selectOne = studentMapper.selectOne(studentQueryWrapper);
+        if(selectOne!=null){
+            return Response.fail(ErrorCode.STUDENT_NUMBER_NOT_NULL);
+        }
+        Student student = new Student();
+        BeanUtil.copyProperties(studentVo,student);
+        student.setSchoolId(currentUser.getSchoolId());
+        student.setSalt(EncryptUtil.salt());
+        student.setPassword(EncryptUtil.encryptPassword(student.getPhone(),student.getSalt()));
+        studentMapper.insert(student);
+        return Response.success("更新成功");
+    }
+
+    @Override
+    public Response creatorNumber() {
+        String year = LocalDateTime.now().toString().substring(0,4);
+        Integer number = studentMapper.creatorNumber(year);
+        if (number == 0){
+            number =1;
+        }
+        String studentNumber = String.format("%s%04d", year,number);
+        return Response.success("获取成功",studentNumber);
+    }
+
+    @Override
+    @Transactional
+    public Response delStudent(String studentId, UserJwtVo currentUser) {
+        Student student = studentMapper.selectById(studentId);
+        if(student == null){
+            return Response.fail(ErrorCode.USER_NOT_EXISTS);
+        }
+        student.setIsDel(false);
+        studentMapper.updateById(student);
+        return Response.success("更新成功");
     }
 }

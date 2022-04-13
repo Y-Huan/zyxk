@@ -3,12 +3,12 @@
 <mapper namespace="com.zyy.zyxk.dao.StudentMapper">
     <select id="getLogin" resultType="com.zyy.zyxk.api.vo.LoginVo">
         select
-            s.student_id,
-            s.student_name,
+            s.student_id as id,
+            s.student_name as userName,
             s.school_id,
             s.phone
         from student s
-        where s.student_number = #{userName} and is_valid = 1
+        where s.student_number = #{userName} and is_del = 1
     </select>
     <select id="selectStudent" resultType="com.zyy.zyxk.api.vo.student.StudentVo">
         select
@@ -21,4 +21,35 @@
         left join clase c on c.clase_id = s.clase_id
         where s.student_id = #{studentId} and is_valid = 1
     </select>
+    <select id="getStudentList" resultType="com.zyy.zyxk.api.vo.student.StudentVo">
+        select
+            student_id,
+            student_number,
+            student_name,
+            phone,
+            sex
+        from student
+        where clase_id = #{claseId} and is_del = 1
+    </select>
+    <select id="creatorNumber" resultType="java.lang.Integer">
+        SELECT
+            CASE
+
+                WHEN
+                    b.num IS NULL THEN
+                    0 ELSE b.num
+                END AS num
+        FROM
+            ( SELECT ( max( RIGHT ( student_number, 4 ))+ 1 ) AS num FROM `student` WHERE student_number REGEXP  concat(#{year},'[0-9][0-9][0-9][0-9]') ) b;
+    </select>
+    <select id="getStudentMajor" resultType="java.lang.String">
+        select
+            m.major_id
+        from student s
+        left join clase c on c.clase_id = s.clase_id
+        left join major m on m.major_id = c.major_id
+        where s.student_id = #{id} and s.is_Del = 1
+    </select>
+
+
 </mapper>

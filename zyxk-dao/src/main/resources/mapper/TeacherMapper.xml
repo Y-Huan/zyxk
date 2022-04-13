@@ -7,13 +7,13 @@
             t.teacher_name as userName,
             t.phone,
             t.school_id,
-            sa.authority_permission
+            GROUP_CONCAT(sa.authority_permission)  as authority_permissions
         from teacher t
-        left join teacher_role_rel trr on trr.teacher_id = t.teacher_id
-        left join role r on r.role_id = trr.role_id
-        left join role_authority_rel rar on rar.role_id = trr.role_id
-        left join sys_authority sa on sa.authority_id = rar.authority_id
-        where t.phone = #{userName} and t.is_del = 1
+                 left join teacher_role_rel trr on trr.teacher_id = t.teacher_id
+                 left join role r on r.role_id = trr.role_id
+                 left join role_authority_rel rar on rar.role_id = trr.role_id
+                 left join sys_authority sa on sa.authority_id = rar.authority_id
+        where t.phone = #{userName} and t.is_del = 1 and rar.is_enable =1
     </select>
     <select id="getList" resultType="com.zyy.zyxk.api.vo.TeacherVo">
         select
@@ -24,7 +24,7 @@
         left join school s on s.school_id = t.school_id
         left join teacher_role_rel ttr on ttr.teacher_id = t.teacher_id
         left join role r on r.role_id = ttr.role_id
-        where t.is_del = 1
+        where t.is_del = 1 and ttr.is_del = 1
         <if test="selectStringKey != null and selectStringKey != '' ">
            and t.phone like concat ('%',#{selectStringKey},'%')
         </if>

@@ -7,21 +7,23 @@
             c.course_id as courseId,
             c.course_name as courseName,
             c.audit_status,
+            c.choice_amount,
+            c.course_type,
+            c.teacher_type,
+            c.choice_time,
             t1.teacher_name as checkUser,
-            t2.teacher_name as creator
-        from course
+            t2.teacher_name as creator,
+            m.major_id,
+            m.major_name
+        from course c
         left join teacher t1 on t1.teacher_id = c.check_user
         left join teacher t2 on t2.teacher_id = c.creator
-        where is_del = true
+        left join major m on m.major_id = c.major_id
+        where c.is_del = true and c.school_id = #{schoolId}
         <if test="courseName != null and courseName != ''">
-            and course_name like concat ('%',#{courseName},'%')
+            and c.course_name like concat ('%',#{courseName},'%')
         </if>
-        <if test="type != null ">
-            and type = #{type}
-        </if>
-        <if test="teachType != null ">
-            and teach_type = #{teachType}
-        </if>
+
     </select>
     <select id="selectCourseById" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
         select
@@ -44,6 +46,40 @@
         from course
         where course_id = #{courseId}
             and choice_time between #{startTime} and #{endTime}
+    </select>
+    <select id="getStudentCourseList" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
+        select
+            c.course_id as courseId,
+            c.course_name as courseName,
+            c.audit_status,
+            c.choice_amount,
+            c.course_type,
+            c.teacher_type,
+            c.choice_time,
+            t2.teacher_name,
+            m.major_id,
+            m.major_name
+        from course c
+        left join teacher t2 on t2.teacher_id = c.creator
+        left join major m on m.major_id = c.major_id
+        where c.is_del = true and c.school_id = #{schoolId} and course_type = 1
+        and c.choice_time between #{stateTime} and #{endTime}
+        and c.major_id = #{majorId}
+    </select>
+    <select id="getPublicStudentCourseList" resultType="com.zyy.zyxk.api.vo.course.CourseVo">
+        select
+            c.course_id as courseId,
+            c.course_name as courseName,
+            c.audit_status,
+            c.choice_amount,
+            c.course_type,
+            c.teacher_type,
+            c.choice_time,
+            t2.teacher_name
+        from course c
+                 left join teacher t2 on t2.teacher_id = c.teacher_id
+        where c.is_del = true and c.school_id = #{schoolId} and course_type = 2
+          and c.choice_time between #{stateTime} and #{endTime}
     </select>
 
     <update id="updateCourseById">

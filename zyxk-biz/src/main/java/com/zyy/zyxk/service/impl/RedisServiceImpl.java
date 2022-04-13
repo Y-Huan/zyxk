@@ -54,9 +54,10 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public boolean testget(String id) {
         ListOperations<String ,String> test =(ListOperations<String ,String> )redisTemplate.opsForList();
-        if(test.size(JSON.toJSONString(id))==0){
+        if(test.size(JSON.toJSONString(id))== 0){
             return false;
         }else {
+            test.leftPop(JSON.toJSONString(id));
             return true;
         }
     }

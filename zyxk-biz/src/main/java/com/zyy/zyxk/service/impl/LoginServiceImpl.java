@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -57,6 +58,9 @@ public class LoginServiceImpl implements LoginService {
         }
         //查询返回所需的信息
         LoginVo loginVo =  teacherMapper.getLogin(userName);
+        List<String> list = Arrays.asList(loginVo.getAuthorityPermissions().split(","));  //此集合无法操作添加元素
+        List<String> list1 = new ArrayList<String>(list); //此集合可操作元素
+        loginVo.setAuthorityPermission(list1);
         UserJwtVo userJwtVo = new UserJwtVo();
         BeanUtil.copyProperties(loginVo, userJwtVo);
         //生成token
@@ -69,10 +73,10 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public LoginVo studentLogin(String userName, String password) {
-        QueryWrapper<Student> teacherQueryWrapper = new QueryWrapper<>();
-        teacherQueryWrapper.eq("student_number",userName);
-        teacherQueryWrapper.eq("is_valid",true);
-        Student student =  studentMapper.selectOne(teacherQueryWrapper);
+        QueryWrapper<Student> studentQueryWrapper = new QueryWrapper<>();
+        studentQueryWrapper.eq("student_number",userName);
+        studentQueryWrapper.eq("is_del",true);
+        Student student =  studentMapper.selectOne(studentQueryWrapper);
         if (student == null) {
             throw new BizException(ErrorCode.USER_NOT_EXISTS);
         }

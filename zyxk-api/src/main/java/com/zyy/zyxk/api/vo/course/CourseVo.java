@@ -32,6 +32,8 @@ public class CourseVo {
     private String courseAddress;
     @ApiModelProperty(value = "授课老师")
     private String teacherId;
+    @ApiModelProperty(value = "授课老师名称")
+    private String teacherName;
     @ApiModelProperty(value = "审核状态")
     private Integer auditStatus;
     @ApiModelProperty(value = "审核人")
@@ -39,6 +41,8 @@ public class CourseVo {
     @ApiModelProperty(value = "选择时间")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private LocalDateTime choiceTime;
+    @ApiModelProperty(value = "可选择人数")
+    private Integer choiceAmount;
     @ApiModelProperty(value = "创建者")
     private String creator;
 }

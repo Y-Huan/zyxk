@@ -88,6 +88,7 @@ public enum ErrorCode {
     AUDIT_DEL_ERROR(10080,"审核单已失效"),
     TEACHER_NULL_ERROR(10081,"未匹配到教师"),
     STUDENT_TUTOR_REL_NOT_NULL_ERROR(10082,"您已选择导师"),
+    STUDENT_NUMBER_NOT_NULL(10083,"学号重复"),
 
     BIND_ERROR(99900, "参数校验失败"),
     CONSTRAINT_ERROR(99910, "全局异常"),
